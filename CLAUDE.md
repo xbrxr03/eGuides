@@ -108,7 +108,13 @@ or invent a brand mark; either pull the real one or leave it out.
   prints all candidates instead of guessing — check what each one actually
   is (metadata.json has `aliases`/`categories`) before re-running with the
   exact slug. A name with no match prints "no match found"; don't substitute
-  a lookalike.
+  a lookalike. Some icons are PNG-only (metadata's `base` field) — the
+  script saves those as `<slug>.png` instead of `.svg`, check the actual
+  saved filename. Fuzzy matching can also resolve to an unrelated icon that
+  merely shares the search word (e.g. `whisper` matched a generic
+  speech-bubble icon for an unrelated "web-whisper" app, not OpenAI
+  Whisper's branding) — glance at the downloaded file before using it, not
+  just the slug name.
 - `styles/icons/` is a shared cache like the rest of `styles/` — tracked in
   git, so guides that reference the same tool don't redownload it. Only
   icons an actual guide uses should live here; don't pre-fetch speculatively.

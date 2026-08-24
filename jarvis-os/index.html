@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Your JARVIS OS — The 4-Step Build</title>
+<link rel="stylesheet" href="../styles/grove/grove.css">
+<script src="../styles/grove/grove.js" defer></script>
+</head>
+<body class="grove">
+<div class="wrap">
+
+  <section class="section">
+    <span class="kicker">Free Setup Guide</span>
+    <h1>Build Your <span style="color:var(--grove-coral)">JARVIS OS</span></h1>
+    <p class="lead">The 4-step build — by the last step, it runs your whole day.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+      <span class="tag"><img src="../styles/icons/anthropic.svg" alt="" width="14" height="14"> Claude Code · engine</span>
+      <span class="tag"><img src="../styles/icons/obsidian.svg" alt="" width="14" height="14"> Obsidian · memory</span>
+      <span class="tag">Local voice · I/O</span>
+      <span class="tag">One HUD · face</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>You speak. JARVIS routes the work.</h2>
+    <p><strong>Old way:</strong> you drive every tool by hand — tabs, typing, lost context. <strong>New way:</strong> one voice layer. Speak, the right skill runs, the answer comes back out loud.</p>
+    <div class="terminal" style="width:auto; display:inline-flex; font-size:14px;">
+      Voice → JARVIS → Claude Code → skill → spoken answer
+    </div>
+    <div style="overflow-x:auto; margin-top:20px;">
+    <table>
+      <thead><tr><th>Part</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Claude Code</strong></td><td>The engine. Routes every request to the right skill.</td></tr>
+        <tr><td><strong>Obsidian</strong></td><td>The memory. Everything lands as linked markdown.</td></tr>
+        <tr><td><strong>Local voice</strong></td><td>The ears + mouth. STT in, TTS out — 100% private.</td></tr>
+        <tr><td><strong>The HUD</strong></td><td>The face. One screen for vitals, schedule, commands.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- Step 1 -->
+  <section class="section">
+    <span class="kicker">Step 1 · ~30 min</span>
+    <h2>Wire the brain.</h2>
+    <p>Claude Code + a folder of skills. Each skill is one <code class="mono-cell">SKILL.md</code> file, pulled in only when it's needed.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/anthropics-claude-code.png" alt="anthropics/claude-code repository on GitHub" loading="lazy">
+    </div>
+    <p style="margin-top:16px;"><strong>Your first five skills</strong> — small, single-purpose beats one giant prompt:</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>~/.claude/skills/
+  metrics/SKILL.md   # pulls your numbers
+  inbox/SKILL.md     # the morning brief
+  trends/SKILL.md    # scans what's moving
+  plan/SKILL.md      # writes today's top 3
+  vault/SKILL.md     # reads + writes memory</pre>
+    </div>
+    <p><a href="https://github.com/anthropics/claude-code">github.com/anthropics/claude-code →</a></p>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="section">
+    <span class="kicker">Step 2 · ~20 min</span>
+    <h2>Build the memory.</h2>
+    <p>If it's not in the vault, it didn't happen. The vault itself lives in Obsidian:</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/obsidian-md.png" alt="obsidian.md homepage" loading="lazy">
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>vault/
+  raw/      # everything captured, untouched
+  wiki/     # distilled knowledge, cross-referenced
+  outputs/  # everything shipped</pre>
+    </div>
+    <p>Every report lands as markdown — no database. Notes link into a graph (the Karpathy system), JARVIS queries that graph to answer fast, and you can read everything it knows because it's just files.</p>
+    <p><a href="https://obsidian.md">obsidian.md →</a> · full wiring instructions in the <a href="../obsidian/">Obsidian × Claude Code guide</a>.</p>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="section">
+    <span class="kicker">Step 3 · ~15 min</span>
+    <h2>Add the voice.</h2>
+    <p>Your audio never leaves the machine. Push to talk — hold space, speak. Local STT hears you, local TTS answers out loud. Free forever, private by default, no API latency.</p>
+    <p class="lead" style="font-size:16px;">The guide is model-agnostic by design — swap any local STT/TTS pair you like. Two real, widely-used starting points:</p>
+
+    <h3 style="margin-top:24px;">whisper.cpp — local speech-to-text</h3>
+    <div class="screenshot">
+      <img src="assets/screenshots/whisper-cpp.png" alt="ggml-org/whisper.cpp repository on GitHub" loading="lazy">
+    </div>
+    <p><a href="https://github.com/ggml-org/whisper.cpp">github.com/ggml-org/whisper.cpp →</a></p>
+
+    <h3 style="margin-top:32px;">Piper — local text-to-speech</h3>
+    <div class="screenshot">
+      <img src="assets/screenshots/piper.png" alt="rhasspy/piper repository on GitHub" loading="lazy">
+    </div>
+    <p><a href="https://github.com/rhasspy/piper">github.com/rhasspy/piper →</a></p>
+  </section>
+
+  <!-- Step 4 -->
+  <section class="section">
+    <span class="kicker">Step 4 · one evening</span>
+    <h2>Build the face.</h2>
+    <p>One screen. Everything JARVIS knows. Go to Claude Code and use this prompt:</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>Build a dark terminal HUD for my OS: system vitals · command deck
+· schedule · audio I/O · live data from the vault. One screen. No tabs.</pre>
+    </div>
+    <p>Hit run. Open it. Tweak it by voice.</p>
+  </section>
+
+  <section class="section">
+    <span class="kicker">What a Real Day Looks Like</span>
+    <h2>Your voice is the interface.</h2>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Time</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td><strong>7:00 AM</strong></td><td>"Morning brief." Inbox, calendar, AI news — read out loud.</td></tr>
+        <tr><td><strong>9:00 AM</strong></td><td>"Plan today." Top 3 priorities land in the vault.</td></tr>
+        <tr><td><strong>2:00 PM</strong></td><td>"Metrics pull." Subs, views, followers — tracked.</td></tr>
+        <tr><td><strong>7:00 PM</strong></td><td>"Close the day." Reflection logged. Tomorrow queued.</td></tr>
+        <tr><td><strong>Anytime</strong></td><td>"Ask anything." The vault remembers everything.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="lead" style="font-size:16px; margin-top:16px;">Consistency compounds.</p>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <strong>Keep in mind:</strong> start with five skills, not fifty. Markdown only — no database, ever. Local voice keeps it private and free. One HUD screen — resist adding tabs.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

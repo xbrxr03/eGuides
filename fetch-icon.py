@@ -15,7 +15,7 @@ import urllib.request
 from pathlib import Path
 
 METADATA_URL = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/metadata.json"
-SVG_URL = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/{slug}.svg"
+ICON_URL = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/{base}/{slug}.{base}"
 ICONS_DIR = Path(__file__).resolve().parent / "styles" / "icons"
 
 
@@ -42,14 +42,15 @@ def resolve(name, metadata):
     return sorted(fuzzy)
 
 
-def fetch_svg(slug):
+def fetch_icon(slug, meta):
+    base = meta.get("base", "svg")
     ICONS_DIR.mkdir(parents=True, exist_ok=True)
-    dest = ICONS_DIR / f"{slug}.svg"
+    dest = ICONS_DIR / f"{slug}.{base}"
     if dest.exists():
-        print(f"  already cached: styles/icons/{slug}.svg")
+        print(f"  already cached: styles/icons/{slug}.{base}")
         return
-    urllib.request.urlretrieve(SVG_URL.format(slug=slug), dest)
-    print(f"  saved styles/icons/{slug}.svg")
+    urllib.request.urlretrieve(ICON_URL.format(base=base, slug=slug), dest)
+    print(f"  saved styles/icons/{slug}.{base}")
 
 
 def main():
@@ -66,7 +67,11 @@ def main():
             exit_code = 1
         elif len(matches) == 1:
             print(f"'{name}' -> {matches[0]}")
-            fetch_svg(matches[0])
+            try:
+                fetch_icon(matches[0], metadata[matches[0]])
+            except Exception as e:
+                print(f"  failed: {e}")
+                exit_code = 1
         else:
             shown = matches[:15]
             print(f"'{name}' is ambiguous ({len(matches)} matches): {', '.join(shown)}"
