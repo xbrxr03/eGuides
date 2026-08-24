@@ -11,6 +11,10 @@ on the user's website. Sources are one of:
 In every case the job is: extract the underlying material, then produce a
 clean HTML eGuide from it.
 
+Guides are reference material, not articles — keep prose minimal. The two
+things that matter are copy-pastable code blocks (see `.code-block` below)
+and clickable links. Don't pad with paragraphs.
+
 ## Structure
 
 Each eGuide gets its own topic folder at the repo root, named as a kebab-case
@@ -42,6 +46,10 @@ output, not raw material). An eguide links to its pack with a relative
 stylesheet path, e.g. from `<topic-slug>/index.html`:
 
     <link rel="stylesheet" href="../styles/grove/grove.css">
+    <script src="../styles/grove/grove.js" defer></script>
+
+Both tags are required if the guide uses code blocks — the CSS alone renders
+`.code-block` but the copy button does nothing without `grove.js`.
 
 ### grove (default, current only pack)
 
@@ -58,8 +66,22 @@ a look.
   classes for the pack's signature patterns: `.kicker` (numbered pill badge),
   `.card`, `.stat` (big numbers), `.lead`, `.mono`, `.script`, `.graph-paper`
   (grid background), `.icon-tile` (glossy beveled icon square), `.terminal`
-  (dark floating card). Add `class="grove"` on `<body>` and on any container
-  that needs the type rules.
+  (dark floating card), `.code-block` + `.copy-btn` (copy-pastable code, see
+  below). Add `class="grove"` on `<body>` and on any container that needs
+  the type rules.
+- `styles/grove/grove.js` — vanilla JS, no dependencies. Delegated click
+  handler that wires up every `.copy-btn` on the page: copies its
+  `.code-block`'s `<pre>` text via `navigator.clipboard`, falls back to a
+  hidden-textarea + `execCommand('copy')` if Clipboard API is missing OR
+  rejects (e.g. permission denied — confirmed this actually happens, not
+  just a theoretical case), and flips the button to "Copied!" for 1.5s
+  either way. Markup pattern:
+
+      <div class="code-block">
+        <button class="copy-btn" type="button">Copy</button>
+        <pre>npm install -g some-cli-tool</pre>
+      </div>
+
 - `grove-editorial-design-system.html`, `Grove-Palette.svg`,
   `Grove-Typography.svg`, `Grove-Patterns.svg`, `Grove-ThumbnailExample.svg`
   — the original reference/mockup files the pack was exported from. Open
@@ -67,10 +89,23 @@ a look.
   into real, linkable CSS.
 - `grove.css`'s body-copy size (18px) and lead size (22px) are my own call —
   the source system was built for punchy short video slides, not long-form
-  reading, so paragraph sizing for actual guide prose isn't specified
-  upstream. Adjust if it reads too big/small once a real guide is built.
+  reading. Since guides run code-blocks/links first and prose is minimal
+  anyway (see top of file), this mostly matters for the occasional one-line
+  blurb — adjust if it reads too big/small once a real guide is built.
+
+## Previewing locally
+
+`.claude/launch.json` has a `static-preview` config (`python3 -m http.server
+8934`) for the Claude Code browser preview tool — needed because relative
+asset paths (fonts, `styles/...`) and `navigator.clipboard` don't behave the
+same under a bare `file://` URL. Opening an eguide's `index.html` straight
+from disk will look unstyled; serve the repo root and navigate to
+`http://localhost:8934/<topic-slug>/` instead.
 
 ## Conventions log
 
-- 2026-08-23 — design packs added (see above): `styles/<pack-name>/`,
-  tracked in git, referenced by relative path from each eguide.
+- 2026-08-23 — design packs added: `styles/<pack-name>/`, tracked in git,
+  referenced by relative path from each eguide.
+- 2026-08-23 — guides are code-blocks + links first, prose is minimal;
+  grove pack got `.code-block`/`.copy-btn`/`grove.js` and real link styling
+  to match.

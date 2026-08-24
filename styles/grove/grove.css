@@ -197,4 +197,66 @@ body.grove {
   padding: 24px;
 }
 
-.grove a { color: var(--grove-accent-text); }
+/* links — guides are reference material, so make clickable obvious */
+.grove a {
+  color: var(--grove-accent-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--grove-paper-line);
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.grove a:hover {
+  color: var(--grove-coral);
+  text-decoration-color: currentColor;
+}
+
+/* copy-pastable code block: dark terminal surface + copy button.
+   Markup: <div class="code-block"><button class="copy-btn">Copy</button><pre>...</pre></div>
+   grove.js wires the button up via navigator.clipboard. */
+.grove .code-block {
+  position: relative;
+  background: var(--grove-surface);
+  border-radius: 14px;
+  margin: 16px 0;
+  overflow-x: auto;
+}
+.grove .code-block pre {
+  margin: 0;
+  padding: 20px 76px 20px 20px;
+  font-family: var(--grove-font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--grove-surface-text);
+  white-space: pre;
+}
+.grove .code-block code {
+  font-family: inherit;
+  color: inherit;
+}
+.grove .copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--grove-font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grove-surface-text);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.grove .copy-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+.grove .copy-btn.copied {
+  background: var(--grove-sage);
+  border-color: var(--grove-sage);
+  color: var(--grove-forest-deep);
+}
