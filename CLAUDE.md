@@ -93,6 +93,28 @@ a look.
   anyway (see top of file), this mostly matters for the occasional one-line
   blurb — adjust if it reads too big/small once a real guide is built.
 
+## Icons
+
+Real brand/tool icons come from [dashboardicons.com](https://dashboardicons.com)
+(GitHub: `homarr-labs/dashboard-icons`, Apache-2.0 — "icons are used for
+identification purposes only and do not imply endorsement"). Never hand-draw
+or invent a brand mark; either pull the real one or leave it out.
+
+- `./fetch-icon.py <name> [<name>...]` — resolves friendly names against the
+  project's live `metadata.json` (matches on slug, then exact alias, then
+  fuzzy substring) and downloads the matched SVG into `styles/icons/<slug>.svg`.
+  Exact slugs work too. An ambiguous name (e.g. `claude` matches both
+  `anthropic`, the official logo, and `clawd`, a community mascot icon)
+  prints all candidates instead of guessing — check what each one actually
+  is (metadata.json has `aliases`/`categories`) before re-running with the
+  exact slug. A name with no match prints "no match found"; don't substitute
+  a lookalike.
+- `styles/icons/` is a shared cache like the rest of `styles/` — tracked in
+  git, so guides that reference the same tool don't redownload it. Only
+  icons an actual guide uses should live here; don't pre-fetch speculatively.
+- Reference from a guide: `<img src="../styles/icons/<slug>.svg" alt="...">`
+  — works well dropped into `.icon-tile` from the grove pack.
+
 ## Previewing locally
 
 `.claude/launch.json` has a `static-preview` config (`python3 -m http.server
@@ -109,3 +131,5 @@ from disk will look unstyled; serve the repo root and navigate to
 - 2026-08-23 — guides are code-blocks + links first, prose is minimal;
   grove pack got `.code-block`/`.copy-btn`/`grove.js` and real link styling
   to match.
+- 2026-08-23 — icons come from dashboardicons.com via `./fetch-icon.py`,
+  cached in `styles/icons/`. Never fabricate a brand icon.
