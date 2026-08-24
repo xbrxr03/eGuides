@@ -1,0 +1,8 @@
+# Raw source material (PDFs, carousel screenshots, reel/video captures,
+# transcripts) — kept locally only, never published.
+**/source/
+
+# OS junk
+.DS_Store
+Thumbs.db
+._*
