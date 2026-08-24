@@ -1,0 +1,28 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tileGloss" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="0.58" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="#E8E1DC"/>
+  <rect x="0" y="0" width="14" height="720" fill="#1B2E22"/>
+
+  <rect x="72" y="121" width="240" height="38" rx="19" fill="#EFEFEF"/>
+  <circle cx="94" cy="140" r="4" fill="#D7614F"/>
+  <text x="108" y="145" font-family="JetBrains Mono, monospace" font-weight="700" font-size="14" letter-spacing="3" fill="#1C1717">THE REAL NUMBER</text>
+
+  <text x="72" y="278" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="76" letter-spacing="-1.5" fill="#1C1717">Every step</text>
+  <text x="72" y="358" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="76" letter-spacing="-1.5" fill="#8E3222">multiplies risk.</text>
+
+  <text x="72" y="410" font-family="JetBrains Mono, monospace" font-size="18" fill="#4E4644">A 95%-reliable step, chained ten times, is</text>
+  <text x="72" y="436" font-family="JetBrains Mono, monospace" font-size="18" fill="#4E4644">a coin flip.</text>
+
+  <rect x="900" y="250" width="220" height="220" rx="32" fill="#1B2E22"/>
+  <rect x="900" y="250" width="220" height="220" rx="32" fill="url(#tileGloss)"/>
+  <text x="1010" y="382" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="96" letter-spacing="-1.5" fill="#FFFFFF">36<tspan font-size="44">%</tspan></text>
+
+  <rect x="920" y="500" width="180" height="42" rx="21" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <text x="1010" y="526" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13" letter-spacing="1.5" fill="#1F5C42">SUCCESS AT 20 STEPS</text>
+</svg>

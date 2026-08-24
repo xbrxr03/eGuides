@@ -1,0 +1,47 @@
+<svg width="1280" height="960" viewBox="0 0 1280 960" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="960" fill="#E8E1DC"/>
+
+  <rect x="64" y="64" width="180" height="34" rx="17" fill="#EFEFEF"/>
+  <circle cx="82" cy="81" r="3.5" fill="#D7614F"/>
+  <text x="94" y="85" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="2.5" fill="#1C1717">TYPE TRIAD</text>
+
+  <g font-family="JetBrains Mono, monospace" font-size="12" fill="#4E4644" letter-spacing="1">
+    <text x="64" y="196">DISPLAY / 700</text>
+    <text x="64" y="212">FRAUNCES</text>
+    <text x="64" y="290">HEADLINE / 700</text>
+    <text x="64" y="306">FRAUNCES</text>
+    <text x="64" y="384">STAT / 700</text>
+    <text x="64" y="400">FRAUNCES, TIGHT</text>
+    <text x="64" y="478">BODY / 500</text>
+    <text x="64" y="494">FRAUNCES</text>
+    <text x="64" y="568">MONO / 400</text>
+    <text x="64" y="584">JETBRAINS MONO</text>
+    <text x="64" y="654">KICKER / 700</text>
+    <text x="64" y="670">JETBRAINS MONO, +0.28EM</text>
+    <text x="64" y="748">SCRIPT ACCENT</text>
+    <text x="64" y="764">LOBSTER</text>
+  </g>
+
+  <line x1="248" y1="150" x2="1216" y2="150" stroke="#D8CFC9"/>
+  <text x="248" y="205" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="64" letter-spacing="-1" fill="#1C1717">Cut the chain.</text>
+
+  <line x1="248" y1="244" x2="1216" y2="244" stroke="#D8CFC9"/>
+  <text x="248" y="292" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="44" letter-spacing="-0.5" fill="#1C1717">Every step you add</text>
+  <text x="248" y="336" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="44" letter-spacing="-0.5" fill="#1C1717">multiplies the risk.</text>
+
+  <line x1="248" y1="366" x2="1216" y2="366" stroke="#D8CFC9"/>
+  <text x="248" y="418" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="88" letter-spacing="-1.5" fill="#1F5C42">36%</text>
+
+  <line x1="248" y1="460" x2="1216" y2="460" stroke="#D8CFC9"/>
+  <text x="248" y="490" font-family="Fraunces, Georgia, serif" font-weight="500" font-size="22" fill="#4E4644">Reliability engineering's oldest law: components running</text>
+  <text x="248" y="518" font-family="Fraunces, Georgia, serif" font-weight="500" font-size="22" fill="#4E4644">in series multiply. They don't average.</text>
+
+  <line x1="248" y1="554" x2="1216" y2="554" stroke="#D8CFC9"/>
+  <text x="248" y="585" font-family="JetBrains Mono, monospace" font-size="18" fill="#1C1717">$ node cli/lint.mjs plan.json --preset grove-editorial</text>
+
+  <line x1="248" y1="644" x2="1216" y2="644" stroke="#D8CFC9"/>
+  <rect x="248" y="655" width="200" height="34" rx="4" fill="none"/>
+  <text x="248" y="678" font-family="JetBrains Mono, monospace" font-weight="700" font-size="14" letter-spacing="4" fill="#1C1717">05 / DECODE</text>
+
+  <text x="248" y="768" font-family="Lobster, cursive" font-size="56" fill="#D7614F">the fix</text>
+</svg>

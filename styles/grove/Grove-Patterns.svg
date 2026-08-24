@@ -1,0 +1,90 @@
+<svg width="1280" height="1180" viewBox="0 0 1280 1180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="graphGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#D8CFC9" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="glossGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="0.58" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glossCoral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="0.58" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="1180" fill="#E8E1DC"/>
+
+  <rect x="64" y="64" width="248" height="34" rx="17" fill="#EFEFEF"/>
+  <circle cx="82" cy="81" r="3.5" fill="#D7614F"/>
+  <text x="94" y="85" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="2.5" fill="#1C1717">SIGNATURE PATTERNS</text>
+
+  <!-- Row 1 -->
+  <rect x="64" y="140" width="576" height="230" rx="16" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <text x="88" y="172" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">GRAPH-PAPER FIELD</text>
+  <rect x="88" y="188" width="528" height="158" rx="12" fill="#E8E1DC" stroke="#D8CFC9"/>
+  <rect x="88" y="188" width="528" height="158" fill="url(#graphGrid)"/>
+
+  <rect x="664" y="140" width="552" height="230" rx="16" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <text x="688" y="172" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">NUMBERED KICKER PILL</text>
+  <rect x="688" y="188" width="504" height="158" rx="12" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <rect x="847" y="252" width="186" height="34" rx="17" fill="#EFEFEF"/>
+  <circle cx="865" cy="269" r="3.5" fill="#D7614F"/>
+  <text x="877" y="273" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13" letter-spacing="2.5" fill="#1C1717">03 / DECODE</text>
+
+  <!-- Row 2 -->
+  <rect x="64" y="394" width="576" height="230" rx="16" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <text x="88" y="426" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">GLOSSY BEVELED ICON TILE</text>
+  <rect x="88" y="442" width="528" height="158" rx="12" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <rect x="270" y="480" width="88" height="88" rx="20" fill="#1B2E22"/>
+  <rect x="270" y="480" width="88" height="88" rx="20" fill="url(#glossGreen)"/>
+  <path d="M314 500 l7 16 17 1 -13 12 4 17 -15 -9 -15 9 4 -17 -13 -12 17 -1 z" fill="none" stroke="#7FAE86" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="378" y="480" width="88" height="88" rx="20" fill="#D7614F"/>
+  <rect x="378" y="480" width="88" height="88" rx="20" fill="url(#glossCoral)"/>
+  <circle cx="422" cy="524" r="20" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <path d="M422 512v14l10 8" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+
+  <rect x="664" y="394" width="552" height="230" rx="16" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <text x="688" y="426" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">DARK CARD FLOATING ON PAPER</text>
+  <rect x="688" y="442" width="504" height="158" rx="12" fill="#E8E1DC" stroke="#D8CFC9"/>
+  <rect x="704" y="500" width="472" height="42" rx="14" fill="#151314"/>
+  <circle cx="726" cy="521" r="5" fill="#D7614F"/>
+  <circle cx="744" cy="521" r="5" fill="#7FAE86"/>
+  <text x="766" y="526" font-family="JetBrains Mono, monospace" font-size="13" fill="#B8B4B4">grove.terminal</text>
+
+  <!-- Row 3: hub diagram -->
+  <rect x="64" y="648" width="1152" height="290" rx="16" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <text x="88" y="680" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">CONVERGING HUB DIAGRAM</text>
+  <g>
+    <rect x="88" y="696" width="1104" height="220" rx="12" fill="#FFFFFF" stroke="#D8CFC9"/>
+    <path d="M 228 736 Q 480 736 655 806" fill="none" stroke="#D7614F" stroke-width="2" stroke-dasharray="6 6"/>
+    <path d="M 228 806 L 655 806" fill="none" stroke="#7FAE86" stroke-width="2" stroke-dasharray="6 6"/>
+    <path d="M 228 876 Q 480 876 655 806" fill="none" stroke="#4E4644" stroke-width="2" stroke-dasharray="6 6"/>
+    <path d="M 1052 736 Q 800 736 655 806" fill="none" stroke="#D7614F" stroke-width="2" stroke-dasharray="6 6"/>
+    <path d="M 1052 806 L 655 806" fill="none" stroke="#7FAE86" stroke-width="2" stroke-dasharray="6 6"/>
+    <path d="M 1052 876 Q 800 876 655 806" fill="none" stroke="#4E4644" stroke-width="2" stroke-dasharray="6 6"/>
+
+    <rect x="112" y="720" width="90" height="32" rx="10" fill="#EFEFEF" stroke="#D8CFC9"/>
+    <text x="125" y="740" font-family="JetBrains Mono, monospace" font-size="12" fill="#1C1717">hook</text>
+    <rect x="112" y="790" width="102" height="32" rx="10" fill="#EFEFEF" stroke="#D8CFC9"/>
+    <text x="125" y="810" font-family="JetBrains Mono, monospace" font-size="12" fill="#1C1717">visuals</text>
+    <rect x="112" y="860" width="94" height="32" rx="10" fill="#EFEFEF" stroke="#D8CFC9"/>
+    <text x="125" y="880" font-family="JetBrains Mono, monospace" font-size="12" fill="#1C1717">trends</text>
+
+    <rect x="1000" y="720" width="90" height="32" rx="10" fill="#EFEFEF" stroke="#D8CFC9"/>
+    <text x="1013" y="740" font-family="JetBrains Mono, monospace" font-size="12" fill="#1C1717">reach</text>
+    <rect x="988" y="790" width="102" height="32" rx="10" fill="#EFEFEF" stroke="#D8CFC9"/>
+    <text x="1001" y="810" font-family="JetBrains Mono, monospace" font-size="12" fill="#1C1717">retention</text>
+    <rect x="1010" y="860" width="80" height="32" rx="10" fill="#EFEFEF" stroke="#D8CFC9"/>
+    <text x="1023" y="880" font-family="JetBrains Mono, monospace" font-size="12" fill="#1C1717">ship</text>
+
+    <rect x="600" y="788" width="110" height="36" rx="18" fill="#1B2E22"/>
+    <text x="655" y="811" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="1" fill="#FFFFFF">CENTER</text>
+  </g>
+
+  <!-- Row 4: slab headline -->
+  <rect x="64" y="964" width="1152" height="152" rx="16" fill="#FFFFFF" stroke="#D8CFC9"/>
+  <text x="88" y="996" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">TWO-TIER SLAB HEADLINE</text>
+  <text x="88" y="1058" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="52" letter-spacing="-1" fill="#1C1717">Every top creator.</text>
+  <text x="88" y="1108" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="52" letter-spacing="-1" fill="#8E3222">Decoded.</text>
+</svg>

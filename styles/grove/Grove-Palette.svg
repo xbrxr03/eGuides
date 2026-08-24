@@ -1,0 +1,79 @@
+<svg width="1280" height="960" viewBox="0 0 1280 960" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="960" fill="#E8E1DC"/>
+
+  <rect x="64" y="64" width="300" height="34" rx="17" fill="#EFEFEF"/>
+  <circle cx="82" cy="81" r="3.5" fill="#D7614F"/>
+  <text x="94" y="85" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="2.5" fill="#1C1717">GROVE EDITORIAL / TOKENS</text>
+  <text x="1216" y="85" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1" fill="#4E4644">WARM VARIANT (DEFAULT)</text>
+
+  <text x="64" y="172" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="52" letter-spacing="-1" fill="#1C1717">Design tokens</text>
+  <text x="64" y="228" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="52" letter-spacing="-1" fill="#2A5540">for the paper.</text>
+  <text x="64" y="262" font-family="JetBrains Mono, monospace" font-size="14" fill="#4E4644">Warm graph-paper editorial system, from tokens/families/grove.data.ts</text>
+
+  <text x="64" y="322" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">CANVAS &amp; STRUCTURE</text>
+
+  <g font-family="JetBrains Mono, monospace">
+    <rect x="64" y="340" width="276" height="100" rx="12" fill="#E8E1DC" stroke="#D8CFC9"/>
+    <text x="64" y="462" font-weight="700" font-size="12" fill="#1C1717">paper</text>
+    <text x="64" y="480" font-size="11" fill="#4E4644">#E8E1DC</text>
+
+    <rect x="356" y="340" width="276" height="100" rx="12" fill="#D8CFC9" stroke="#D8CFC9"/>
+    <text x="356" y="462" font-weight="700" font-size="12" fill="#1C1717">paperLine</text>
+    <text x="356" y="480" font-size="11" fill="#4E4644">#D8CFC9</text>
+
+    <rect x="648" y="340" width="276" height="100" rx="12" fill="#1B2E22" stroke="#D8CFC9"/>
+    <text x="648" y="462" font-weight="700" font-size="12" fill="#1C1717">forest</text>
+    <text x="648" y="480" font-size="11" fill="#4E4644">#1B2E22</text>
+
+    <rect x="940" y="340" width="276" height="100" rx="12" fill="#16271C" stroke="#D8CFC9"/>
+    <text x="940" y="462" font-weight="700" font-size="12" fill="#1C1717">forestDeep</text>
+    <text x="940" y="480" font-size="11" fill="#4E4644">#16271C</text>
+  </g>
+
+  <text x="64" y="530" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">ACCENT — ONE WARM HUE AT A TIME</text>
+
+  <g font-family="JetBrains Mono, monospace">
+    <rect x="64" y="548" width="276" height="100" rx="12" fill="#7FAE86" stroke="#D8CFC9"/>
+    <text x="64" y="670" font-weight="700" font-size="12" fill="#1C1717">sage</text>
+    <text x="64" y="688" font-size="11" fill="#4E4644">#7FAE86</text>
+
+    <rect x="356" y="548" width="276" height="100" rx="12" fill="#D7614F" stroke="#D8CFC9"/>
+    <text x="356" y="670" font-weight="700" font-size="12" fill="#1C1717">coral (rationed)</text>
+    <text x="356" y="688" font-size="11" fill="#4E4644">#D7614F</text>
+  </g>
+
+  <text x="64" y="738" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#4E4644">TEXT-SAFE ROLES (WCAG AA ON PAPER)</text>
+
+  <g font-family="JetBrains Mono, monospace">
+    <rect x="64" y="756" width="218" height="72" rx="12" fill="#E8E1DC" stroke="#D8CFC9"/>
+    <text x="150" y="800" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="22" fill="#1C1717">Aa</text>
+    <text x="64" y="850" font-weight="700" font-size="12" fill="#1C1717">ink</text>
+    <text x="64" y="866" font-size="11" fill="#4E4644">#1C1717</text>
+
+    <rect x="298" y="756" width="218" height="72" rx="12" fill="#E8E1DC" stroke="#D8CFC9"/>
+    <text x="384" y="800" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="22" fill="#4E4644">Aa</text>
+    <text x="298" y="850" font-weight="700" font-size="12" fill="#1C1717">muted</text>
+    <text x="298" y="866" font-size="11" fill="#4E4644">#4E4644</text>
+
+    <rect x="532" y="756" width="218" height="72" rx="12" fill="#E8E1DC" stroke="#D8CFC9"/>
+    <text x="618" y="800" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="22" fill="#2A5540">Aa</text>
+    <text x="532" y="850" font-weight="700" font-size="12" fill="#1C1717">accentText</text>
+    <text x="532" y="866" font-size="11" fill="#4E4644">#2A5540</text>
+
+    <rect x="766" y="756" width="218" height="72" rx="12" fill="#E8E1DC" stroke="#D8CFC9"/>
+    <text x="852" y="800" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="22" fill="#8E3222">Aa</text>
+    <text x="766" y="850" font-weight="700" font-size="12" fill="#1C1717">alertText</text>
+    <text x="766" y="866" font-size="11" fill="#4E4644">#8E3222</text>
+
+    <rect x="1000" y="756" width="216" height="72" rx="12" fill="#E8E1DC" stroke="#D8CFC9"/>
+    <text x="1108" y="800" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="22" fill="#1F5C42">Aa</text>
+    <text x="1000" y="850" font-weight="700" font-size="12" fill="#1C1717">payoffText</text>
+    <text x="1000" y="866" font-size="11" fill="#4E4644">#1F5C42</text>
+  </g>
+
+  <rect x="64" y="892" width="1152" height="52" rx="14" fill="#151314"/>
+  <circle cx="90" cy="918" r="7" fill="#D7614F"/>
+  <text x="112" y="923" font-family="JetBrains Mono, monospace" font-size="13" fill="#B8B4B4">surface #151314</text>
+  <rect x="270" y="905" width="120" height="26" rx="6" fill="#FFFFFF" fill-opacity="0.06"/>
+  <text x="282" y="923" font-family="JetBrains Mono, monospace" font-size="13" fill="#EFEFEF">chip #EFEFEF</text>
+</svg>

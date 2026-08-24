@@ -1,0 +1,200 @@
+/*
+  Grove Editorial — eGuides design system
+  Source: MotionAgent "Grove Editorial" video pack, exported into styles/grove/ on 2026-08-23.
+  Reference: grove-editorial-design-system.html + the Grove-*.svg files in this folder.
+
+  Usage: link this file, add class="grove" to <body>, use the utility
+  classes below (.kicker, .card, .stat, .lead, .mono, .script, .graph-paper,
+  .icon-tile, .terminal) to match the patterns shown in the reference files.
+*/
+
+@font-face {
+  font-family: 'Fraunces';
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Fraunces-Variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lobster';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Lobster-Regular.woff2') format('woff2');
+}
+
+:root {
+  /* canvas & structure */
+  --grove-paper: #E8E1DC;
+  --grove-paper-line: #D8CFC9;
+  --grove-forest: #1B2E22;
+  --grove-forest-deep: #16271C;
+  --grove-surface: #151314;
+  --grove-surface-text: #B8B4B4;
+  --grove-chip: #EFEFEF;
+
+  /* accent — one warm hue at a time, ration the coral */
+  --grove-sage: #7FAE86;
+  --grove-coral: #D7614F;
+
+  /* text-safe roles (WCAG AA on paper) */
+  --grove-ink: #1C1717;
+  --grove-muted: #4E4644;
+  --grove-accent-text: #2A5540;
+  --grove-alert-text: #8E3222;
+  --grove-payoff-text: #1F5C42;
+
+  /* type */
+  --grove-font-serif: 'Fraunces', Georgia, serif;
+  --grove-font-mono: 'JetBrains Mono', monospace;
+  --grove-font-script: 'Lobster', cursive;
+}
+
+.grove, .grove * { box-sizing: border-box; }
+
+body.grove {
+  margin: 0;
+  background: var(--grove-paper);
+  color: var(--grove-ink);
+  font-family: var(--grove-font-serif);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.grove h1, .grove h2, .grove h3 {
+  font-family: var(--grove-font-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--grove-ink);
+  margin: 0 0 0.4em;
+}
+.grove h1 { font-size: clamp(40px, 6vw, 76px); line-height: 1.05; }
+.grove h2 { font-size: clamp(30px, 4vw, 44px); line-height: 1.1; }
+.grove h3 { font-size: 26px; line-height: 1.2; }
+
+.grove .stat {
+  font-family: var(--grove-font-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: clamp(56px, 8vw, 96px);
+  line-height: 1;
+}
+
+.grove .lead {
+  font-family: var(--grove-font-serif);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--grove-muted);
+}
+
+.grove .mono {
+  font-family: var(--grove-font-mono);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.grove .script {
+  font-family: var(--grove-font-script);
+  font-weight: 400;
+  color: var(--grove-coral);
+  font-size: 40px;
+}
+
+/* kicker pill: small rounded badge, e.g. "03 / DECODE" */
+.grove .kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  background: var(--grove-chip);
+  border: 1px solid var(--grove-paper-line);
+  border-radius: 999px;
+  padding: 8px 16px 8px 12px;
+  font-family: var(--grove-font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--grove-ink);
+}
+.grove .kicker::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--grove-coral);
+  display: inline-block;
+}
+
+/* graph-paper field: subtle grid background */
+.grove .graph-paper {
+  position: relative;
+  background: var(--grove-paper);
+}
+.grove .graph-paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(var(--grove-paper-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grove-paper-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* glossy beveled icon tile */
+.grove .icon-tile {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  background: var(--grove-forest);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.grove .icon-tile.coral { background: var(--grove-coral); }
+.grove .icon-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0) 58%);
+}
+
+/* dark terminal-style card floating on paper */
+.grove .terminal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--grove-surface);
+  border-radius: 14px;
+  padding: 12px 20px;
+  font-family: var(--grove-font-mono);
+  font-size: 13px;
+  color: var(--grove-surface-text);
+  width: fit-content;
+}
+.grove .terminal .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* generic card on paper */
+.grove .card {
+  background: #FFFFFF;
+  border: 1px solid var(--grove-paper-line);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.grove a { color: var(--grove-accent-text); }
