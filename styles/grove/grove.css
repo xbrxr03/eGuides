@@ -260,3 +260,92 @@ body.grove {
   border-color: var(--grove-sage);
   color: var(--grove-forest-deep);
 }
+
+/* page container + section rhythm */
+.grove .wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+.grove .section {
+  margin: 0 0 56px;
+}
+.grove .section:last-child {
+  margin-bottom: 0;
+}
+
+/* real screenshot, consistently framed */
+.grove .screenshot {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--grove-paper-line);
+  box-shadow: 0 12px 32px rgba(28, 23, 23, 0.12);
+  margin: 16px 0;
+}
+.grove .screenshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* small inline badge, e.g. language / stars / license */
+.grove .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--grove-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--grove-muted);
+  border: 1px solid var(--grove-paper-line);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* numbered step circle */
+.grove .step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--grove-forest);
+  color: #fff;
+  font-family: var(--grove-font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* tables */
+.grove table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.grove th {
+  background: var(--grove-forest);
+  color: #fff;
+  text-align: left;
+  padding: 10px 14px;
+  font-family: var(--grove-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.grove td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--grove-paper-line);
+  vertical-align: top;
+}
+.grove tr:last-child td {
+  border-bottom: none;
+}
+.grove td .mono-cell {
+  font-family: var(--grove-font-mono);
+  font-size: 13px;
+  background: var(--grove-chip);
+  padding: 2px 6px;
+  border-radius: 4px;
+}

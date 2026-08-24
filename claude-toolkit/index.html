@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Claude Toolkit — 7 Repos That Make Claude Better</title>
+<link rel="stylesheet" href="../styles/grove/grove.css">
+<script src="../styles/grove/grove.js" defer></script>
+</head>
+<body class="grove">
+<div class="wrap">
+
+  <section class="section">
+    <span class="kicker">Issue 01 · August 2026</span>
+    <h1>7 repos that make <span style="color:var(--grove-coral)">claude</span> better.</h1>
+    <p class="lead">The open-source stack behind faster, sharper, longer-memory Claude Code sessions — skills, subagents, search, docs, browsing, scraping, and memory.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+      <span class="tag"><img src="../styles/icons/github.svg" alt="" width="14" height="14"> 7 repos</span>
+      <span class="tag">490K+ combined stars</span>
+      <span class="tag"><img src="../styles/icons/anthropic.svg" alt="" width="14" height="14"> Claude Code ready</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card mono" style="font-size:14px; color:var(--grove-muted);">
+      <strong style="color:var(--grove-ink);">How to use this guide:</strong> each entry has what it does, why it's worth installing, and the exact command to wire it into Claude Code. Star counts below are live as of this build — check the repo for the current count.
+    </div>
+  </section>
+
+  <!-- 01 skills -->
+  <section class="section">
+    <span class="kicker">Code 01 / 07</span>
+    <h2>#1: <span style="color:var(--grove-coral)">skills</span></h2>
+    <p class="lead">Anthropic's official skills repo.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/anthropics-skills.png" alt="anthropics/skills repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">Python</span>
+      <span class="tag">★ 171K</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>If you're not using skills yet, you're leaving most of Claude's specialized performance on the table.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add anthropics/skills
+/plugin install document-skills@anthropic-agent-skills
+/plugin install example-skills@anthropic-agent-skills</pre>
+    </div>
+    <p><a href="https://github.com/anthropics/skills">github.com/anthropics/skills →</a></p>
+  </section>
+
+  <!-- 02 agents -->
+  <section class="section">
+    <span class="kicker">Code 02 / 07</span>
+    <h2>#2: <span style="color:var(--grove-coral)">agents</span></h2>
+    <p class="lead">202 subagents, drop-in ready.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/wshobson-agents.png" alt="wshobson/agents repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">Python</span>
+      <span class="tag">★ 39K</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>Plug specialist agents into Claude Code without writing a single one yourself.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add wshobson/agents
+/plugin install &lt;agent-name&gt;@agents
+# or: gh repo clone wshobson/agents ~/agents</pre>
+    </div>
+    <p><a href="https://github.com/wshobson/agents">github.com/wshobson/agents →</a></p>
+  </section>
+
+  <!-- 03 claude-context -->
+  <section class="section">
+    <span class="kicker">Code 03 / 07</span>
+    <h2>#3: <span style="color:var(--grove-coral)">claude-context</span></h2>
+    <p class="lead">Your entire codebase as context.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/zilliztech-claude-context.png" alt="zilliztech/claude-context repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">TypeScript</span>
+      <span class="tag">★ 12K</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>Stops Claude from re-reading the same files. Indexes once, searches semantically.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>claude mcp add claude-context \
+  -e OPENAI_API_KEY=sk-your-key \
+  -e MILVUS_TOKEN=your-zilliz-token \
+  -- npx @zilliz/claude-context-mcp@latest</pre>
+    </div>
+    <p><a href="https://github.com/zilliztech/claude-context">github.com/zilliztech/claude-context →</a></p>
+  </section>
+
+  <!-- 04 context7 -->
+  <section class="section">
+    <span class="kicker">Code 04 / 07</span>
+    <h2>#4: <span style="color:var(--grove-coral)">context7</span></h2>
+    <p class="lead">Live docs for every library.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/upstash-context7.png" alt="upstash/context7 repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">TypeScript</span>
+      <span class="tag">★ 61K</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>Kills hallucinated APIs. Pulls real, version-specific docs into the prompt at runtime.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>{ "mcpServers": { "context7": { "command": "npx",
+  "args": ["-y", "@upstash/context7-mcp@latest"] } } }</pre>
+    </div>
+    <p><a href="https://github.com/upstash/context7">github.com/upstash/context7 →</a></p>
+  </section>
+
+  <!-- 05 browser-use -->
+  <section class="section">
+    <span class="kicker">Code 05 / 07</span>
+    <h2>#5: <span style="color:var(--grove-coral)">browser-use</span></h2>
+    <p class="lead">Give Claude a browser.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/browser-use.png" alt="browser-use/browser-use repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">Python</span>
+      <span class="tag">★ 110K</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>Filling forms, scraping behind logins, clicking through flows — all from one prompt.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>uv pip install --upgrade browser-use
+browser-use skill install</pre>
+    </div>
+    <p><a href="https://github.com/browser-use/browser-use">github.com/browser-use/browser-use →</a></p>
+  </section>
+
+  <!-- 06 firecrawl -->
+  <section class="section">
+    <span class="kicker">Code 06 / 07</span>
+    <h2>#6: <span style="color:var(--grove-coral)">firecrawl</span></h2>
+    <p class="lead">Any URL to clean markdown.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/firecrawl.png" alt="firecrawl/firecrawl repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">TypeScript</span>
+      <span class="tag">★ 171K</span>
+      <span class="tag">AGPL-3.0</span>
+    </div>
+    <p>One call. Whole site. JS-rendered, paginated, ready to feed straight into Claude.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>{ "mcpServers": { "firecrawl-mcp": { "command": "npx",
+  "args": ["-y", "firecrawl-mcp"],
+  "env": { "FIRECRAWL_API_KEY": "fc-YOUR_KEY" } } } }</pre>
+    </div>
+    <p><a href="https://github.com/firecrawl/firecrawl">github.com/firecrawl/firecrawl →</a></p>
+  </section>
+
+  <!-- 07 mem0 -->
+  <section class="section">
+    <span class="kicker">Code 07 / 07</span>
+    <h2>#7: <span style="color:var(--grove-coral)">mem0</span></h2>
+    <p class="lead">Claude that remembers you.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/mem0.png" alt="mem0ai/mem0 repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">Python</span>
+      <span class="tag">★ 64K</span>
+      <span class="tag">Apache-2.0</span>
+    </div>
+    <p>Persistent memory across sessions. Stops you repeating yourself every new chat.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>pip install mem0ai
+npm install @mem0ai/memory  # TypeScript</pre>
+    </div>
+    <p><a href="https://github.com/mem0ai/mem0">github.com/mem0ai/mem0 →</a></p>
+  </section>
+
+  <section class="section">
+    <span class="kicker">Quick Reference</span>
+    <h2>Install everything.</h2>
+    <p class="lead">Copy, paste, done. One row per repo.</p>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr><th>Repo</th><th>Command</th><th>Stars</th><th>Use it for</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>skills</strong><br>anthropics</td><td><span class="mono-cell">/plugin install document-skills@anthropic-agent-skills</span></td><td>171K</td><td>Repeatable, specialized task instructions</td></tr>
+        <tr><td><strong>agents</strong><br>wshobson</td><td><span class="mono-cell">/plugin marketplace add wshobson/agents</span></td><td>39K</td><td>Drop-in specialist subagents</td></tr>
+        <tr><td><strong>claude-context</strong><br>zilliztech</td><td><span class="mono-cell">claude mcp add claude-context -- npx @zilliz/claude-context-mcp</span></td><td>12K</td><td>Semantic search over large codebases</td></tr>
+        <tr><td><strong>context7</strong><br>upstash</td><td><span class="mono-cell">npx -y @upstash/context7-mcp@latest</span></td><td>61K</td><td>Accurate, current library docs</td></tr>
+        <tr><td><strong>browser-use</strong></td><td><span class="mono-cell">pip install browser-use && browser-use skill install</span></td><td>110K</td><td>Web automation behind logins/forms</td></tr>
+        <tr><td><strong>firecrawl</strong></td><td><span class="mono-cell">npx -y firecrawl-mcp</span></td><td>171K</td><td>Turning any URL into clean markdown</td></tr>
+        <tr><td><strong>mem0</strong><br>mem0ai</td><td><span class="mono-cell">pip install mem0ai</span></td><td>64K</td><td>Persistent memory across sessions</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="terminal" style="width:auto; display:inline-flex;">
+      <span class="dot" style="background:var(--grove-coral)"></span><span class="dot" style="background:var(--grove-sage)"></span>
+      one last thing
+    </div>
+    <h2 style="margin-top:16px;">Stars move. Repos don't stand still.</h2>
+    <p>Every repo here is actively maintained — star counts, APIs, and install commands shift fast in this space. Before wiring one in, check the README on GitHub for anything that's changed since this guide was built.</p>
+  </section>
+
+</div>
+</body>
+</html>
