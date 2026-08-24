@@ -100,6 +100,17 @@ Real brand/tool icons come from [dashboardicons.com](https://dashboardicons.com)
 identification purposes only and do not imply endorsement"). Never hand-draw
 or invent a brand mark; either pull the real one or leave it out.
 
+**Convention: every tool a guide features gets its icon, everywhere it's
+named as a subject — not just the hero.** Hero tags, and every section/step
+that introduces a specific tool, should carry that tool's real icon (as a
+`.tag` badge, matching the hero pattern) if one exists. Try `fetch-icon.py`
+for every tool a guide names as a primary subject before writing that
+section; only skip the icon if the script genuinely reports no match — don't
+skip just because it's "only" a per-section mention. This does NOT mean
+icon-per-word in prose — incidental mentions inside a sentence or a code
+snippet (e.g. an env var referencing a provider) don't need one; it's about
+the tools that get their own heading/section.
+
 - `./fetch-icon.py <name> [<name>...]` — resolves friendly names against the
   project's live `metadata.json` (matches on slug, then exact alias, then
   fuzzy substring) and downloads the matched SVG into `styles/icons/<slug>.svg`.
