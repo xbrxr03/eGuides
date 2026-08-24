@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obsidian × Claude Code — Unlimited, Self-Improving Memory</title>
+<link rel="stylesheet" href="../styles/grove/grove.css">
+<script src="../styles/grove/grove.js" defer></script>
+</head>
+<body class="grove">
+<div class="wrap">
+
+  <section class="section">
+    <span class="kicker">Free Setup Guide</span>
+    <h1>Obsidian <span style="color:var(--grove-coral)">×</span> Claude Code</h1>
+    <p class="lead">Four GitHub repos. Unlimited, self-improving memory.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+      <span class="tag"><img src="../styles/icons/obsidian.svg" alt="" width="14" height="14"> Obsidian</span>
+      <span class="tag"><img src="../styles/icons/anthropic.svg" alt="" width="14" height="14"> Claude Code</span>
+      <span class="tag"><img src="../styles/icons/github.svg" alt="" width="14" height="14"> 4 repos</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Claude forgets everything. Obsidian fixes that.</h2>
+    <p>By default, every Claude Code session starts from zero — no memory of yesterday, no context from last week. Connect Obsidian the right way and your vault becomes Claude's long-term brain instead.</p>
+    <p>This pattern was formalized by <strong>Andrej Karpathy</strong> — a founding member of OpenAI and former Tesla AI director. His insight: don't use AI to search your notes, use it to <strong>build and maintain a wiki</strong> that gets smarter over time. The four repos below make that work inside Claude Code.</p>
+  </section>
+
+  <section class="section">
+    <span class="kicker">Before You Start</span>
+    <h2>Connect Obsidian to Claude — 3 steps</h2>
+    <p>Do this before installing any repos below — they all build on this foundation.</p>
+
+    <div style="display:flex; gap:14px; align-items:flex-start; margin:24px 0 12px;">
+      <span class="step-num">1</span>
+      <div>
+        <h3 style="margin-bottom:6px;">Install Obsidian and create your vault</h3>
+        <p style="margin:0 0 12px;">Go to <a href="https://obsidian.md">obsidian.md</a>, download the app, click "Create new vault," and name it anything — <code class="mono-cell">My Brain</code>, <code class="mono-cell">OS</code>, <code class="mono-cell">Second Brain</code>.</p>
+      </div>
+    </div>
+    <div class="screenshot">
+      <img src="assets/screenshots/obsidian-md.png" alt="obsidian.md homepage" loading="lazy">
+    </div>
+
+    <div style="display:flex; gap:14px; align-items:flex-start; margin:32px 0 12px;">
+      <span class="step-num">2</span>
+      <div>
+        <h3 style="margin-bottom:6px;">Connect Claude to your vault</h3>
+        <p style="margin:0;">In your Claude Code project, open or create <code class="mono-cell">CLAUDE.md</code> in the project root and add this block (swap in your real vault path):</p>
+      </div>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>## Memory
+
+My Obsidian vault is located at: [PASTE YOUR FOLDER PATH HERE]
+
+Always read from this vault at the start of every session for context
+about me, my business, and my goals. When saving notes or insights,
+write back to this vault using Obsidian markdown format — wikilinks
+([[like this]]), frontmatter at the top of each file, and proper
+backlinks.</pre>
+    </div>
+    <p class="lead" style="font-size:16px;">Without the format instruction, Claude writes plain markdown your vault can't parse — graph view stays empty and notes become orphans.</p>
+
+    <div style="display:flex; gap:14px; align-items:flex-start; margin:32px 0 12px;">
+      <span class="step-num">3</span>
+      <div>
+        <h3 style="margin-bottom:6px;">Add context about yourself</h3>
+        <p style="margin:0;">Create a note in Obsidian called <code class="mono-cell">About Me</code>:</p>
+      </div>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre># About Me
+
+Name: [Your name]
+Business: [What you do]
+Goals: [What you're building toward]
+Current projects: [What's active right now]
+My audience: [Who you create for]
+Decisions made: [Things you don't want to re-debate]</pre>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <strong>Test it:</strong> open a new Claude session and say "Read my vault and tell me what you know about me." If it answers with your actual context, it's working.
+    </div>
+  </section>
+
+  <section class="section">
+    <span class="kicker">The Setup</span>
+    <h2>Install these four, in this order.</h2>
+    <p>Each builds on the previous. For each one, paste the link directly into Claude Code — it downloads and installs automatically.</p>
+  </section>
+
+  <!-- 1 Karpathy's LLM Wiki -->
+  <section class="section">
+    <span class="kicker">01 / 04</span>
+    <h3>Karpathy's LLM Wiki</h3>
+    <p class="lead" style="font-size:16px;">by Andrej Karpathy — founding member of OpenAI, former Tesla AI director</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/karpathy-llm-wiki.png" alt="Andrej Karpathy's llm-wiki gist on GitHub" loading="lazy">
+    </div>
+    <p>The structural foundation — gives your vault a three-layer architecture Claude follows for everything it writes: <strong>raw</strong> source material, a <strong>wiki</strong> Claude maintains and cross-references, and <strong>output</strong> config for how the vault stays organized.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f</pre>
+    </div>
+    <p><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">gist.github.com/karpathy/442a6bf555914893e9891c11519de94f →</a></p>
+  </section>
+
+  <!-- 2 obsidian-skills -->
+  <section class="section">
+    <span class="kicker">02 / 04</span>
+    <h3>obsidian-skills</h3>
+    <p class="lead" style="font-size:16px;">by kepano — CEO of Obsidian</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/kepano-obsidian-skills.png" alt="kepano/obsidian-skills repository on GitHub" loading="lazy">
+    </div>
+    <p>Teaches Claude the exact Obsidian file format — correct frontmatter, wikilinks, embeds, callouts. Every other skill here depends on this being right.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>https://github.com/kepano/obsidian-skills</pre>
+    </div>
+    <p><a href="https://github.com/kepano/obsidian-skills">github.com/kepano/obsidian-skills →</a></p>
+  </section>
+
+  <!-- 3 obsidian-mind -->
+  <section class="section">
+    <span class="kicker">03 / 04</span>
+    <h3>obsidian-mind</h3>
+    <p class="lead" style="font-size:16px;">by breferrari</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/breferrari-obsidian-mind.png" alt="breferrari/obsidian-mind repository on GitHub" loading="lazy">
+    </div>
+    <p>The live bridge between Claude and your vault — real-time read/write access, pulling only the notes relevant to what you're working on. Runs automatically at the start of every session.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>https://github.com/breferrari/obsidian-mind</pre>
+    </div>
+    <p><a href="https://github.com/breferrari/obsidian-mind">github.com/breferrari/obsidian-mind →</a></p>
+  </section>
+
+  <!-- 4 obsidian-second-brain -->
+  <section class="section">
+    <span class="kicker">04 / 04</span>
+    <h3>obsidian-second-brain</h3>
+    <p class="lead" style="font-size:16px;">by eugeniughelbur</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/eugeniughelbur-obsidian-second-brain.png" alt="eugeniughelbur/obsidian-second-brain repository on GitHub" loading="lazy">
+    </div>
+    <p>The most powerful of the four. Claude saves what it finds mid-conversation without being asked, rewrites existing pages, and resolves contradictions. Scheduled agents run in the background — morning briefings, nightly consolidation, weekly reviews.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>https://github.com/eugeniughelbur/obsidian-second-brain</pre>
+    </div>
+    <p><a href="https://github.com/eugeniughelbur/obsidian-second-brain">github.com/eugeniughelbur/obsidian-second-brain →</a></p>
+  </section>
+
+  <section class="section">
+    <div class="terminal" style="width:auto; display:inline-flex;">
+      <span class="dot" style="background:var(--grove-coral)"></span><span class="dot" style="background:var(--grove-sage)"></span>
+      the bigger picture
+    </div>
+    <h2 style="margin-top:16px;">This is what agentic systems look like.</h2>
+    <p>Most people use Claude Code to write code faster — that's not what this is. Once your vault is set up this way, it becomes the brain of an autonomous system: workflows live in the vault, findings get saved back to it, and every session Claude reads what's relevant, does the work, and writes what it learned back in.</p>
+    <p class="lead" style="font-size:16px;">The shift: from using Claude as a tool you prompt, to deploying it as a system that runs itself.</p>
+  </section>
+
+</div>
+</body>
+</html>
