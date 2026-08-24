@@ -21,7 +21,18 @@ ICONS_DIR = Path(__file__).resolve().parent / "styles" / "icons"
 
 def load_metadata():
     with urllib.request.urlopen(METADATA_URL) as r:
-        return json.load(r)
+        metadata = json.load(r)
+    # light/dark color variants (e.g. "eleven-labs-light") are real, fetchable
+    # files but aren't indexed as their own top-level entries — add them so
+    # exact-slug lookup finds them too.
+    for meta in list(metadata.values()):
+        for variant_slug in meta.get("colors", {}).values():
+            metadata.setdefault(variant_slug, {"base": meta.get("base", "svg"), "aliases": []})
+    return metadata
+
+
+def norm(s):
+    return s.lower().replace("-", "").replace(" ", "")
 
 
 def resolve(name, metadata):
@@ -34,10 +45,11 @@ def resolve(name, metadata):
     ]
     if exact_alias:
         return exact_alias
-    fuzzy = {slug for slug in metadata if q in slug.lower()}
+    nq = norm(q)
+    fuzzy = {slug for slug in metadata if nq in norm(slug)}
     fuzzy |= {
         slug for slug, meta in metadata.items()
-        if any(q in a.lower() for a in meta.get("aliases", []))
+        if any(nq in norm(a) for a in meta.get("aliases", []))
     }
     return sorted(fuzzy)
 

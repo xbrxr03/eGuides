@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Your JARVIS OS — Hermes Edition</title>
+<link rel="stylesheet" href="../styles/grove/grove.css">
+<script src="../styles/grove/grove.js" defer></script>
+</head>
+<body class="grove">
+<div class="wrap">
+
+  <section class="section">
+    <span class="kicker">Free Setup Guide · Alt Build</span>
+    <h1>Build Your JARVIS OS <span style="color:var(--grove-coral)">— Hermes Edition</span></h1>
+    <p class="lead">The same 4-step build, different engine and voice — self-improving agent, cloud voice, one HUD.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+      <span class="tag"><img src="../styles/icons/hermes-icon.svg" alt="" width="14" height="14"> Hermes Agent · engine</span>
+      <span class="tag"><img src="../styles/icons/obsidian.svg" alt="" width="14" height="14"> Obsidian · memory</span>
+      <span class="tag"><img src="../styles/icons/eleven-labs-light.png" alt="" width="14" height="14"> ElevenLabs · voice</span>
+      <span class="tag"><img src="../styles/icons/anthropic.svg" alt="" width="14" height="14"> Claude · face</span>
+    </div>
+    <p class="lead" style="font-size:15px; margin-top:16px;">Want the free, fully local version instead? See the <a href="../jarvis-os/">original Claude Code + local voice build</a>.</p>
+  </section>
+
+  <section class="section">
+    <h2>You speak. JARVIS routes the work.</h2>
+    <p>Same loop as the original build — only the engine and the voice layer change.</p>
+    <div class="terminal" style="width:auto; display:inline-flex; font-size:14px;">
+      Voice → JARVIS → Hermes Agent → skill → spoken answer
+    </div>
+    <div style="overflow-x:auto; margin-top:20px;">
+    <table>
+      <thead><tr><th>Part</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Hermes Agent</strong></td><td>The engine. Self-improving — creates and refines its own skills as it runs.</td></tr>
+        <tr><td><strong>Obsidian</strong></td><td>The memory. Everything lands as linked markdown.</td></tr>
+        <tr><td><strong>ElevenLabs</strong></td><td>The ears + mouth. Cloud STT (Scribe) in, TTS out, 70+ languages.</td></tr>
+        <tr><td><strong>Claude</strong></td><td>The face. One prompt builds the HUD screen.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- Step 1 -->
+  <section class="section">
+    <span class="kicker">Step 1</span>
+    <h2>Wire the brain.</h2>
+    <p>Hermes Agent — Nous Research's self-improving agent. It creates skills from experience, improves them during use, and persists what it learns across sessions. Skills are compatible with the open <a href="https://agentskills.io">agentskills.io</a> standard, so the same kind of small, single-purpose skill files from the original build carry over directly.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/hermes-agent.png" alt="NousResearch/hermes-agent repository on GitHub" loading="lazy">
+    </div>
+    <p style="margin-top:16px;"><strong>Install</strong> (Linux, macOS, WSL2, Termux):</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</pre>
+    </div>
+    <p>Model-agnostic by design — Nous Portal, OpenRouter, OpenAI, or your own endpoint, switched with <code class="mono-cell">hermes model</code>, no code changes. Example starter skills, same shape as the original build:</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>skills/
+  metrics/   # pulls your numbers
+  inbox/     # the morning brief
+  trends/    # scans what's moving
+  plan/      # writes today's top 3
+  vault/     # reads + writes memory</pre>
+    </div>
+    <p><a href="https://github.com/NousResearch/hermes-agent">github.com/NousResearch/hermes-agent →</a></p>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="section">
+    <span class="kicker">Step 2</span>
+    <h2>Build the memory.</h2>
+    <p>Unchanged from the original build — if it's not in the vault, it didn't happen. The vault lives in Obsidian:</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/obsidian-md.png" alt="obsidian.md homepage" loading="lazy">
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>vault/
+  raw/      # everything captured, untouched
+  wiki/     # distilled knowledge, cross-referenced
+  outputs/  # everything shipped</pre>
+    </div>
+    <p><a href="https://obsidian.md">obsidian.md →</a> · full wiring instructions in the <a href="../obsidian/">Obsidian × Claude Code guide</a>.</p>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="section">
+    <span class="kicker">Step 3</span>
+    <h2>Add the voice.</h2>
+    <p>The original build uses local, private STT/TTS. This edition trades that for ElevenLabs — hosted, ultra-low-latency, and higher setup speed at the cost of a paid API and audio leaving your machine.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/elevenlabs.png" alt="ElevenLabs homepage" loading="lazy">
+    </div>
+    <p><strong>Why ElevenLabs:</strong> Scribe handles speech-to-text, their core Text-to-Speech API answers back, 70+ languages, and their Voice Agents platform can run the whole STT→agent→TTS loop behind one config instead of wiring two separate local engines.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>curl -X POST https://api.elevenlabs.io/v1/text-to-speech/{voice_id} \
+  -H "xi-api-key: $ELEVENLABS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Morning brief is ready.", "model_id": "eleven_multilingual_v2"}'</pre>
+    </div>
+    <p><a href="https://elevenlabs.io">elevenlabs.io →</a></p>
+  </section>
+
+  <!-- Step 4 -->
+  <section class="section">
+    <span class="kicker">Step 4 · one evening</span>
+    <h2>Build the face.</h2>
+    <p>Unchanged — one screen, everything JARVIS knows. Go to Claude and use this prompt:</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/anthropics-claude-code.png" alt="anthropics/claude-code repository on GitHub" loading="lazy">
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>Build a dark terminal HUD for my OS: system vitals · command deck
+· schedule · audio I/O · live data from the vault. One screen. No tabs.</pre>
+    </div>
+    <p>Hit run. Open it. Tweak it by voice.</p>
+  </section>
+
+  <section class="section">
+    <span class="kicker">What a Real Day Looks Like</span>
+    <h2>Your voice is the interface.</h2>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Time</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td><strong>7:00 AM</strong></td><td>"Morning brief." Inbox, calendar, AI news — read out loud.</td></tr>
+        <tr><td><strong>9:00 AM</strong></td><td>"Plan today." Top 3 priorities land in the vault.</td></tr>
+        <tr><td><strong>2:00 PM</strong></td><td>"Metrics pull." Subs, views, followers — tracked.</td></tr>
+        <tr><td><strong>7:00 PM</strong></td><td>"Close the day." Reflection logged. Tomorrow queued.</td></tr>
+        <tr><td><strong>Anytime</strong></td><td>"Ask anything." The vault remembers everything.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <strong>Which build should you use?</strong> This edition trades privacy and $0 running cost for a self-improving engine and higher-fidelity voice with less setup. If audio never leaving your machine matters more than voice quality, use the <a href="../jarvis-os/">original local build</a> instead.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

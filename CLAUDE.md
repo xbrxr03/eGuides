@@ -115,6 +115,14 @@ or invent a brand mark; either pull the real one or leave it out.
   speech-bubble icon for an unrelated "web-whisper" app, not OpenAI
   Whisper's branding) — glance at the downloaded file before using it, not
   just the slug name.
+- Many icons have light/dark color variants (e.g. `eleven-labs-light` for
+  use on a light background, vs. the base slug which is often white-on-
+  transparent and invisible on `.tag`/paper backgrounds) — `fetch-icon.py`
+  resolves these variant slugs directly even though they aren't top-level
+  metadata entries. Watch for the reverse problem too: at least one variant
+  file (`eleven-labs-light`) is actually a PNG despite living at a `.svg`-
+  suffixed URL upstream — if a "downloaded successfully" file won't render,
+  check its real magic bytes before assuming the script is wrong.
 - `styles/icons/` is a shared cache like the rest of `styles/` — tracked in
   git, so guides that reference the same tool don't redownload it. Only
   icons an actual guide uses should live here; don't pre-fetch speculatively.
