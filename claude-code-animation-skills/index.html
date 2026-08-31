@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Claude Code Design Agent Stack</title>
+<link rel="stylesheet" href="../styles/grove/grove.css">
+<script src="../styles/grove/grove.js" defer></script>
+<style>
+  .repo-card { background:#fff; border:1px solid var(--grove-paper-line); border-radius:16px; padding:22px 24px 0; margin:18px 0 12px; overflow:hidden; }
+  .repo-card-head { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .repo-card-head img.avatar { width:30px; height:30px; border-radius:50%; flex-shrink:0; display:block; }
+  .repo-card-name { font-family:var(--grove-font-mono); font-size:16px; }
+  .repo-card-name .owner { color:var(--grove-muted); }
+  .repo-card-name .repo { font-weight:700; color:var(--grove-ink); }
+  .repo-card-head .gh-mark { margin-left:auto; width:20px; height:20px; opacity:0.32; flex-shrink:0; }
+  .repo-card-desc { margin:0 0 20px; color:var(--grove-muted); font-size:14.5px; line-height:1.55; }
+  .repo-card-stats { display:flex; gap:24px; flex-wrap:wrap; padding-bottom:18px; }
+  .repo-stat { display:flex; align-items:center; gap:6px; font-family:var(--grove-font-mono); font-size:12.5px; color:var(--grove-muted); }
+  .repo-stat svg { flex-shrink:0; opacity:0.55; }
+  .repo-stat strong { color:var(--grove-ink); font-weight:700; }
+  .repo-card-langbar { display:flex; height:5px; margin:0 -24px; }
+  .repo-card-langbar span { height:100%; }
+  .repo-pills { display:flex; gap:10px; margin:12px 0 0; flex-wrap:wrap; }
+  .repo-pill { background:var(--grove-chip); border:1px solid var(--grove-paper-line); border-radius:999px; padding:7px 14px; font-family:var(--grove-font-mono); font-size:12px; color:var(--grove-ink); }
+  .repo-pill .label { color:var(--grove-muted); text-transform:uppercase; letter-spacing:0.07em; font-size:10px; margin-right:6px; }
+  .stage-num { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; background:var(--grove-forest); color:#fff; font-family:var(--grove-font-mono); font-weight:700; font-size:15px; flex-shrink:0; }
+</style>
+</head>
+<body class="grove">
+<div class="wrap">
+
+  <section class="section">
+    <span class="kicker">7 Skills · 1 Agent</span>
+    <h1>The Claude Code <span style="color:var(--grove-coral)">Design Agent</span> Stack</h1>
+    <p class="lead">Seven free skills that stack into one pipeline: reverse-engineer any UI's design language, build it back out in 3D and motion, then render the whole thing as a finished video — all from inside Claude Code.</p>
+  </section>
+
+  <section class="section">
+    <span class="kicker">Install Pattern</span>
+    <h2>Same two commands, every time.</h2>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add &lt;owner&gt;/&lt;repo&gt;
+/plugin install &lt;skill&gt;@&lt;repo&gt;</pre>
+    </div>
+    <p>Restart Claude Code and the skill is live. Swap in each repo below — the exact <span class="mono-cell">skill</span> name for the second command is in that repo's README.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>npx skills add &lt;owner&gt;/&lt;repo&gt; -g</pre>
+    </div>
+    <p>Not on Claude Code? This one command covers Codex, Cursor, Copilot, Gemini CLI, and 50+ other hosts.</p>
+  </section>
+
+  <!-- STAGE 1 : SEE -->
+  <section class="section">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:6px;">
+      <span class="stage-num">1</span>
+      <div>
+        <span class="kicker" style="margin-bottom:4px;">Stage 1 · See</span>
+        <h2 style="margin:2px 0 0;">Learn any UI's design language</h2>
+      </div>
+    </div>
+    <p>Before the agent can build, it has to see clearly. Design DNA turns any reference UI into a quantified spec — tokens, type, color, layout — the agent can build from instead of guessing.</p>
+
+    <span class="kicker" style="margin-top:8px;">01 / 07</span>
+    <h3>Design DNA</h3>
+    <ul style="margin:0 0 4px; padding-left:20px;">
+      <li>Reverse engineer design</li>
+      <li>Layout analysis</li>
+      <li>Typography</li>
+      <li>Color palette</li>
+      <li>Copy any UI style</li>
+    </ul>
+
+    <div class="repo-card">
+      <div class="repo-card-head">
+        <img class="avatar" src="assets/avatars/zanwei.png" alt="zanwei">
+        <span class="repo-card-name"><span class="owner">zanwei/</span><span class="repo">design-dna</span></span>
+        <img class="gh-mark" src="../styles/icons/github.svg" alt="">
+      </div>
+      <p class="repo-card-desc">Turn reference UIs (images, screenshots, URLs) into quantified Design DNA JSON — tokens, qualitative style, visual effects — then generate matching UI from your content.</p>
+      <div class="repo-card-stats">
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><strong>1</strong> Contributor</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg><strong>1,528</strong> Stars</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg><strong>86</strong> Forks</span>
+      </div>
+    </div>
+    <div class="repo-pills">
+      <span class="repo-pill"><span class="label">To Start</span>one command</span>
+      <span class="repo-pill"><span class="label">Stars</span>★ 1,528</span>
+    </div>
+
+    <div class="code-block" style="margin:16px 0 0;">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add zanwei/design-dna</pre>
+    </div>
+  </section>
+
+  <!-- STAGE 2 : BUILD -->
+  <section class="section">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:6px;">
+      <span class="stage-num">2</span>
+      <div>
+        <span class="kicker" style="margin-bottom:4px;">Stage 2 · Build</span>
+        <h2 style="margin:2px 0 0;">Build it in 3D and motion</h2>
+      </div>
+    </div>
+    <p>Three skills cover execution: real 3D scenes, production-grade animation timelines, and the motion principles that make either one feel right instead of just technically correct.</p>
+
+    <span class="kicker" style="margin-top:8px;">02 / 07</span>
+    <h3>Three.js</h3>
+    <ul style="margin:0 0 4px; padding-left:20px;">
+      <li>Interactive 3D scenes</li>
+      <li>Lighting setup</li>
+      <li>Camera controls</li>
+      <li>Particle effects</li>
+      <li>GLTF models</li>
+    </ul>
+
+    <div class="repo-card">
+      <div class="repo-card-head">
+        <img class="avatar" src="assets/avatars/CloudAI-X.png" alt="CloudAI-X">
+        <span class="repo-card-name"><span class="owner">CloudAI-X/</span><span class="repo">threejs-skills</span></span>
+        <img class="gh-mark" src="../styles/icons/github.svg" alt="">
+      </div>
+      <p class="repo-card-desc">A Claude Code skill for building interactive Three.js scenes — lighting, cameras, particles, and GLTF models.</p>
+      <div class="repo-card-stats">
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><strong>1</strong> Contributor</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg><strong>3,160</strong> Stars</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg><strong>362</strong> Forks</span>
+      </div>
+    </div>
+    <div class="repo-pills">
+      <span class="repo-pill"><span class="label">To Start</span>one command</span>
+      <span class="repo-pill"><span class="label">Stars</span>★ 3,160</span>
+    </div>
+
+    <div class="code-block" style="margin:16px 0 0;">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add CloudAI-X/threejs-skills</pre>
+    </div>
+
+    <span class="kicker" style="margin-top:32px;">03 / 07</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <div class="icon-tile" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/gsap.svg" alt="GSAP" style="width:24px; height:24px; position:relative; z-index:1;">
+      </div>
+      <h3 style="margin:0;">GSAP</h3>
+    </div>
+    <ul style="margin:0 0 4px; padding-left:20px;">
+      <li>Official GreenSock skill</li>
+      <li>Text reveal effects</li>
+      <li>Timeline animation</li>
+      <li>React integration</li>
+      <li>ScrollTrigger</li>
+    </ul>
+
+    <div class="repo-card">
+      <div class="repo-card-head">
+        <img class="avatar" src="assets/avatars/greensock.png" alt="greensock">
+        <span class="repo-card-name"><span class="owner">greensock/</span><span class="repo">gsap-skills</span></span>
+        <img class="gh-mark" src="../styles/icons/github.svg" alt="">
+      </div>
+      <p class="repo-card-desc">Official AI skills for GSAP. These skills teach AI coding agents how to correctly use GSAP (GreenSock Animation Platform), including best practices, common animation patterns, and plugin usage.</p>
+      <div class="repo-card-stats">
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><strong>4</strong> Contributors</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg><strong>14,423</strong> Stars</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg><strong>857</strong> Forks</span>
+      </div>
+    </div>
+    <div class="repo-pills">
+      <span class="repo-pill"><span class="label">To Start</span>one command</span>
+      <span class="repo-pill"><span class="label">Stars</span>★ 14,423</span>
+    </div>
+
+    <div class="code-block" style="margin:16px 0 0;">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add greensock/gsap-skills</pre>
+    </div>
+
+    <span class="kicker" style="margin-top:32px;">04 / 07</span>
+    <h3>Motion Design</h3>
+    <ul style="margin:0 0 4px; padding-left:20px;">
+      <li>Lottie animation</li>
+      <li>Interactive states</li>
+      <li>SVG animation</li>
+      <li>AI motion workflow</li>
+      <li>Timeline &amp; keyframes</li>
+    </ul>
+
+    <div class="repo-card">
+      <div class="repo-card-head">
+        <img class="avatar" src="assets/avatars/lottiefiles.png" alt="lottiefiles">
+        <span class="repo-card-name"><span class="owner">lottiefiles/</span><span class="repo">motion-design-skill</span></span>
+        <img class="gh-mark" src="../styles/icons/github.svg" alt="">
+      </div>
+      <p class="repo-card-desc">Universal motion design principles for AI agents — timing, easing, choreography, and Disney animation principles adapted for UI.</p>
+      <div class="repo-card-stats">
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><strong>1</strong> Contributor</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg><strong>1,415</strong> Stars</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg><strong>84</strong> Forks</span>
+      </div>
+    </div>
+    <div class="repo-pills">
+      <span class="repo-pill"><span class="label">To Start</span>one command</span>
+      <span class="repo-pill"><span class="label">Stars</span>★ 1,415</span>
+    </div>
+
+    <div class="code-block" style="margin:16px 0 0;">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add lottiefiles/motion-design-skill</pre>
+    </div>
+  </section>
+
+  <!-- STAGE 3 : SHIP -->
+  <section class="section">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:6px;">
+      <span class="stage-num">3</span>
+      <div>
+        <span class="kicker" style="margin-bottom:4px;">Stage 3 · Ship</span>
+        <h2 style="margin:2px 0 0;">Render it out as a finished video</h2>
+      </div>
+    </div>
+    <p>Drop a voiceover MP3 into Claude Code. It clones motion-pack's templates, transcribes the audio, matches a template to every spoken phrase, renders each one to video with HyperFrames, and stitches the result together with Remotion — no Premiere, After Effects, or CapCut.</p>
+
+    <span class="kicker" style="margin-top:8px;">05 / 07</span>
+    <h3>HyperFrames</h3>
+    <div class="repo-card">
+      <div class="repo-card-head">
+        <img class="avatar" src="assets/avatars/heygen-com.png" alt="heygen-com">
+        <span class="repo-card-name"><span class="owner">heygen-com/</span><span class="repo">hyperframes</span></span>
+        <img class="gh-mark" src="../styles/icons/github.svg" alt="">
+      </div>
+      <p class="repo-card-desc">Write HTML. Render video. Built for agents.</p>
+      <div class="repo-card-stats">
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><strong>59</strong> Contributors</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg><strong>42,851</strong> Stars</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg><strong>4,125</strong> Forks</span>
+      </div>
+      <div class="repo-card-langbar">
+        <span style="width:89.80%; background:#3178c6;"></span>
+        <span style="width:9.50%; background:#f1e05a;"></span>
+        <span style="width:0.31%; background:#89e051;"></span>
+        <span style="width:0.21%; background:#3572A5;"></span>
+        <span style="width:0.10%; background:#563d7c;"></span>
+        <span style="width:0.05%; background:#844FBA;"></span>
+        <span style="width:0.03%; background:#384d54;"></span>
+      </div>
+    </div>
+    <div class="repo-pills">
+      <span class="repo-pill"><span class="label">To Start</span>one command</span>
+      <span class="repo-pill"><span class="label">Stars</span>★ 42,851</span>
+    </div>
+
+    <div class="code-block" style="margin:16px 0 0;">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add heygen-com/hyperframes</pre>
+    </div>
+
+    <span class="kicker" style="margin-top:32px;">06 / 07</span>
+    <h3>Remotion</h3>
+    <div class="repo-card">
+      <div class="repo-card-head">
+        <img class="avatar" src="assets/avatars/remotion-dev.png" alt="remotion-dev">
+        <span class="repo-card-name"><span class="owner">remotion-dev/</span><span class="repo">remotion</span></span>
+        <img class="gh-mark" src="../styles/icons/github.svg" alt="">
+      </div>
+      <p class="repo-card-desc">Make videos programmatically with React — stitches HyperFrames' rendered clips into the final video.</p>
+      <div class="repo-card-stats">
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><strong>415</strong> Contributors</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg><strong>57,505</strong> Stars</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg><strong>4,348</strong> Forks</span>
+      </div>
+      <div class="repo-card-langbar">
+        <span style="width:77.61%; background:#3178c6;"></span>
+        <span style="width:10.21%; background:#4F5D95;"></span>
+        <span style="width:6.76%; background:#fcb32c;"></span>
+        <span style="width:4.64%; background:#f1e05a;"></span>
+        <span style="width:0.78%; background:#B8AFA8;"></span>
+      </div>
+    </div>
+    <div class="repo-pills">
+      <span class="repo-pill"><span class="label">To Start</span>one command</span>
+      <span class="repo-pill"><span class="label">Stars</span>★ 57,505</span>
+    </div>
+
+    <div class="code-block" style="margin:16px 0 0;">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add remotion-dev/remotion</pre>
+    </div>
+
+    <span class="kicker" style="margin-top:32px;">07 / 07</span>
+    <h3>motion-pack</h3>
+    <div class="repo-card">
+      <div class="repo-card-head">
+        <img class="avatar" src="assets/avatars/halicotampa-crypto.png" alt="halicotampa-crypto">
+        <span class="repo-card-name"><span class="owner">halicotampa-crypto/</span><span class="repo">motion-pack</span></span>
+        <img class="gh-mark" src="../styles/icons/github.svg" alt="">
+      </div>
+      <p class="repo-card-desc">100+ HTML motion graphic templates for Claude Code + HyperFrames + Remotion. MIT licensed.</p>
+      <div class="repo-card-stats">
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><strong>1</strong> Contributor</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg><strong>16</strong> Stars</span>
+        <span class="repo-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg><strong>2</strong> Forks</span>
+      </div>
+      <div class="repo-card-langbar">
+        <span style="width:91.22%; background:#e34c26;"></span>
+        <span style="width:7.79%; background:#f1e05a;"></span>
+        <span style="width:0.60%; background:#563d7c;"></span>
+        <span style="width:0.34%; background:#3572A5;"></span>
+        <span style="width:0.06%; background:#89e051;"></span>
+      </div>
+    </div>
+    <div class="repo-pills">
+      <span class="repo-pill"><span class="label">To Start</span>one command</span>
+      <span class="repo-pill"><span class="label">Stars</span>★ 16</span>
+    </div>
+
+    <div class="code-block" style="margin:16px 0 0;">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>git clone https://github.com/halicotampa-crypto/motion-pack</pre>
+    </div>
+
+    <p class="mono" style="margin:28px 0 0; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--grove-muted);">Starter prompt — adapt to your own voiceover</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>Build me a motion-graphic video using only free tools — no Premiere, no After Effects, no CapCut.
+
+1. Clone github.com/halicotampa-crypto/motion-pack for the HTML templates
+   and Whisper transcribe/silence-cut scripts.
+2. Transcribe my voiceover MP3 and match a template to every spoken phrase.
+3. Render each matched template with HyperFrames
+   (github.com/heygen-com/hyperframes).
+4. Stitch the rendered clips into the final video with Remotion
+   (github.com/remotion-dev/remotion).
+
+Voiceover: [path/to/voiceover.mp3]</pre>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="mono" style="font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--grove-muted);">Curated from @nocodealex / @uxbrainy and a halicotampa-crypto Claude Code guide. Repo stats live from GitHub.</p>
+  </section>
+
+</div>
+</body>
+</html>
