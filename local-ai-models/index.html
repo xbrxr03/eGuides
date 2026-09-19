@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run AI Locally — 7 Repos, No Supercomputer</title>
+<link rel="stylesheet" href="../styles/grove/grove.css">
+<script src="../styles/grove/grove.js" defer></script>
+</head>
+<body class="grove">
+<div class="wrap">
+
+  <section class="section">
+    <span class="kicker">7 Repos · Local &amp; Free</span>
+    <h1>You don't need a supercomputer to run <span style="color:var(--grove-coral)">AI locally</span>.</h1>
+    <p class="lead">Seven open-source projects that run models on hardware you already own — chat, transcription, image and 3D generation, fine-tuning, and a full private AI over your own documents.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+      <span class="tag"><img src="../styles/icons/github.svg" alt="" width="14" height="14"> 7 repos</span>
+      <span class="tag">596K+ combined stars</span>
+      <span class="tag"><img src="../styles/icons/ollama.svg" alt="" width="14" height="14"> No API bill</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card mono" style="font-size:14px; color:var(--grove-muted);">
+      <strong style="color:var(--grove-ink);">How to use this guide:</strong> each entry has what it does, what it actually needs from your machine, and the exact install command from the project's own README. Star counts were pulled live when this guide was built — they move fast, so check the repo.
+      <br><br>
+      <strong style="color:var(--grove-ink);">New to this?</strong> Start at <a href="#ollama">#7 Ollama</a> — one command and a model is running. Come back to the rest once that works.
+    </div>
+  </section>
+
+  <!-- 01 colibri -->
+  <section class="section" id="colibri">
+    <span class="kicker">Repo 01 / 07</span>
+    <h2>#1: <span style="color:var(--grove-coral)">colibri</span></h2>
+    <p class="lead">Frontier models. Your own laptop.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/colibri.png" alt="JustVugg/colibri repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">C</span>
+      <span class="tag">★ 36,218</span>
+      <span class="tag">Apache-2.0</span>
+    </div>
+    <p>Treats your disk, RAM and VRAM as one memory hierarchy and streams the experts in as it needs them. Pure C, zero dependencies — so a 744B-parameter MoE model stops being a question of how much RAM you have.</p>
+    <p><strong>The catch:</strong> it moves the constraint from memory to storage. The reference model (GLM-5.2 int4) is about <strong>372 GB on disk</strong>, ideally a fast SSD. This is the most demanding entry in the guide, not the least.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre># prebuilt release — no compiler needed
+# grab your platform's archive from github.com/JustVugg/colibri/releases
+mkdir colibri &amp;&amp; tar xzf colibri-v1.11.0-linux-x86_64.tar.gz -C colibri &amp;&amp; cd colibri
+python3 coli info
+
+# or build from source (needs gcc/clang with OpenMP)
+git clone https://github.com/JustVugg/colibri &amp;&amp; cd colibri/c
+./setup.sh</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>COLI_MODEL=/nvme/glm52_i4 ./coli doctor   # readiness check
+COLI_MODEL=/nvme/glm52_i4 ./coli chat     # chat in the terminal
+./coli web --model /nvme/glm52_i4         # API + dashboard</pre>
+    </div>
+    <p><a href="https://github.com/JustVugg/colibri">github.com/JustVugg/colibri →</a></p>
+  </section>
+
+  <!-- 02 LocalAI -->
+  <section class="section" id="localai">
+    <span class="kicker">Repo 02 / 07</span>
+    <h2>#2: <span style="color:var(--grove-coral)">LocalAI</span></h2>
+    <p class="lead">A drop-in OpenAI API that needs no GPU.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/localai.png" alt="mudler/LocalAI repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/golang.svg" alt="" width="14" height="14"> Go</span>
+      <span class="tag"><img src="../styles/icons/localai.svg" alt="" width="14" height="14"> LocalAI</span>
+      <span class="tag">★ 49,165</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>One engine for LLMs, vision, voice, image and video — including 3D generation. Point any app that speaks the OpenAI API at <span class="mono">localhost:8080</span> and it works, unchanged.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre># CPU only
+docker run -ti --name local-ai -p 8080:8080 localai/localai:latest
+
+# NVIDIA GPU (CUDA 13)
+docker run -ti --name local-ai -p 8080:8080 --gpus all localai/localai:latest-gpu-nvidia-cuda-13</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>local-ai run llama-3.2-1b-instruct:q4_k_m        # from the gallery
+local-ai run huggingface://TheBloke/phi-2-GGUF/phi-2.Q8_0.gguf
+local-ai run ollama://gemma:2b                   # reuse Ollama models</pre>
+    </div>
+    <p>macOS has a signed-elsewhere DMG — after installing, run <span class="mono">sudo xattr -d com.apple.quarantine /Applications/LocalAI.app</span>.</p>
+    <p><a href="https://github.com/mudler/LocalAI">github.com/mudler/LocalAI →</a></p>
+  </section>
+
+  <!-- 03 whisper.cpp -->
+  <section class="section" id="whisper-cpp">
+    <span class="kicker">Repo 03 / 07</span>
+    <h2>#3: <span style="color:var(--grove-coral)">whisper.cpp</span></h2>
+    <p class="lead">Transcription with no bill.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/whisper-cpp.png" alt="ggml-org/whisper.cpp repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/cpp.svg" alt="" width="14" height="14"> C++</span>
+      <span class="tag">★ 53,771</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>OpenAI's Whisper ported to C/C++. Runs on the CPU, and on an Apple Silicon Mac it runs on the GPU through Metal. Your calls, interviews and voiceovers stop costing by the minute.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>git clone https://github.com/ggml-org/whisper.cpp.git
+cd whisper.cpp
+sh ./models/download-ggml-model.sh base.en
+cmake -B build
+cmake --build build -j --config Release
+./build/bin/whisper-cli -f samples/jfk.wav</pre>
+    </div>
+    <p><a href="https://github.com/ggml-org/whisper.cpp">github.com/ggml-org/whisper.cpp →</a></p>
+  </section>
+
+  <!-- 04 AnythingLLM -->
+  <section class="section" id="anything-llm">
+    <span class="kicker">Repo 04 / 07</span>
+    <h2>#4: <span style="color:var(--grove-coral)">AnythingLLM</span></h2>
+    <p class="lead">Stop renting your AI.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/anything-llm.png" alt="Mintplex-Labs/anything-llm repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/javascript.svg" alt="" width="14" height="14"> JavaScript</span>
+      <span class="tag"><img src="../styles/icons/anything-llm.svg" alt="" width="14" height="14"> AnythingLLM</span>
+      <span class="tag">★ 66,203</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>A desktop app that puts a full private AI on your machine with your own documents inside it — chat over your docs, plus agents. Runs locally by default; nothing you feed it has to leave the laptop.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre># desktop app (Mac, Windows, Linux)
+open https://anythingllm.com/download
+
+# or self-host — multi-user and the embeddable chat widget are Docker-only
+docker pull mintplexlabs/anythingllm</pre>
+    </div>
+    <p><a href="https://github.com/Mintplex-Labs/anything-llm">github.com/Mintplex-Labs/anything-llm →</a></p>
+  </section>
+
+  <!-- 05 unsloth -->
+  <section class="section" id="unsloth">
+    <span class="kicker">Repo 05 / 07</span>
+    <h2>#5: <span style="color:var(--grove-coral)">unsloth</span></h2>
+    <p class="lead">Train your own on one GPU.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/unsloth.png" alt="unslothai/unsloth repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/python.svg" alt="" width="14" height="14"> Python</span>
+      <span class="tag">★ 76,406</span>
+      <span class="tag">Apache-2.0</span>
+    </div>
+    <p>Fine-tuning at roughly twice the speed on about 70% less memory, with no accuracy loss — mixture-of-experts models train far faster. This is the one entry here that genuinely wants a GPU; AMD, Intel, Blackwell and DGX Spark have their own install guides.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>uv venv unsloth_env --python 3.13
+source unsloth_env/bin/activate
+uv pip install unsloth --torch-backend=auto</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>winget install -e --id Python.Python.3.13
+winget install --id=astral-sh.uv -e
+uv venv unsloth_env --python 3.13
+.\unsloth_env\Scripts\activate
+uv pip install unsloth --torch-backend=auto</pre>
+    </div>
+    <p><a href="https://github.com/unslothai/unsloth">github.com/unslothai/unsloth →</a></p>
+  </section>
+
+  <!-- 06 ComfyUI -->
+  <section class="section" id="comfyui">
+    <span class="kicker">Repo 06 / 07</span>
+    <h2>#6: <span style="color:var(--grove-coral)">ComfyUI</span></h2>
+    <p class="lead">Image models on a MacBook.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/comfyui.png" alt="Comfy-Org/ComfyUI repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/python.svg" alt="" width="14" height="14"> Python</span>
+      <span class="tag"><img src="../styles/icons/comfyui.svg" alt="" width="14" height="14"> ComfyUI</span>
+      <span class="tag">★ 133,837</span>
+      <span class="tag">GPL-3.0</span>
+    </div>
+    <p>The image and video generation stack, as a graph/nodes interface. It offloads models and manages memory so a laptop can hold the whole graph — and it supports every OS and GPU type, including Apple Silicon.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>pip install comfy-cli
+comfy install</pre>
+    </div>
+    <p>Prefer a double-click? The <a href="https://www.comfy.org/download">desktop app</a> covers Windows and macOS.</p>
+    <p><a href="https://github.com/Comfy-Org/ComfyUI">github.com/Comfy-Org/ComfyUI →</a></p>
+  </section>
+
+  <!-- 07 ollama -->
+  <section class="section" id="ollama">
+    <span class="kicker">Repo 07 / 07</span>
+    <h2>#7: <span style="color:var(--grove-coral)">ollama</span></h2>
+    <p class="lead">One command. Models running.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/ollama.png" alt="ollama/ollama repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/golang.svg" alt="" width="14" height="14"> Go</span>
+      <span class="tag"><img src="../styles/icons/ollama.svg" alt="" width="14" height="14"> Ollama</span>
+      <span class="tag">★ 181,243</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>The front door if you've never done this before. Install it, type one line, and Kimi, GLM, DeepSeek, gpt-oss, Qwen or Gemma is running on your own machine.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>curl -fsSL https://ollama.com/install.sh | sh
+ollama run gemma4</pre>
+    </div>
+    <p>It also plugs straight into coding tools — <span class="mono">ollama launch claude</span> wires it to Claude Code, and Codex, Copilot CLI, Droid and OpenCode have their own launchers.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>ollama launch claude</pre>
+    </div>
+    <p><a href="https://github.com/ollama/ollama">github.com/ollama/ollama →</a></p>
+  </section>
+
+  <section class="section">
+    <span class="kicker">Quick Reference</span>
+    <h2>Install everything.</h2>
+    <p class="lead">Copy, paste, done. One row per repo.</p>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr><th>Repo</th><th>Command</th><th>Stars</th><th>What it needs</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>ollama</strong></td><td><span class="mono-cell">curl -fsSL https://ollama.com/install.sh | sh</span></td><td>181K</td><td>Anything — start here</td></tr>
+        <tr><td><strong>ComfyUI</strong><br>Comfy-Org</td><td><span class="mono-cell">pip install comfy-cli &amp;&amp; comfy install</span></td><td>134K</td><td>M1–M4 Mac, or any GPU</td></tr>
+        <tr><td><strong>unsloth</strong><br>unslothai</td><td><span class="mono-cell">uv pip install unsloth --torch-backend=auto</span></td><td>76K</td><td>One GPU</td></tr>
+        <tr><td><strong>anything-llm</strong><br>Mintplex-Labs</td><td><span class="mono-cell">docker pull mintplexlabs/anythingllm</span></td><td>66K</td><td>Desktop app, no GPU</td></tr>
+        <tr><td><strong>whisper.cpp</strong><br>ggml-org</td><td><span class="mono-cell">sh ./models/download-ggml-model.sh base.en</span></td><td>54K</td><td>CPU only</td></tr>
+        <tr><td><strong>LocalAI</strong><br>mudler</td><td><span class="mono-cell">docker run -ti -p 8080:8080 localai/localai:latest</span></td><td>49K</td><td>No GPU required</td></tr>
+        <tr><td><strong>colibri</strong><br>JustVugg</td><td><span class="mono-cell">COLI_MODEL=/nvme/glm52_i4 ./coli chat</span></td><td>36K</td><td>~372 GB of fast disk</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="terminal" style="width:auto; display:inline-flex;">
+      <span class="dot" style="background:var(--grove-coral)"></span><span class="dot" style="background:var(--grove-sage)"></span>
+      one last thing
+    </div>
+    <h2 style="margin-top:16px;">"Runs locally" is not the same as "runs on anything".</h2>
+    <p>Ollama, LocalAI, AnythingLLM and whisper.cpp genuinely run on modest hardware with no GPU. ComfyUI wants a decent GPU or Apple Silicon. Unsloth wants a real GPU. Colibri wants a very large, very fast SSD. Read the README's requirements before you start the download — that's where the surprise usually is.</p>
+  </section>
+
+</div>
+</body>
+</html>

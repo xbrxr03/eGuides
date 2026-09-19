@@ -6,3 +6,6 @@
 .DS_Store
 Thumbs.db
 ._*
+
+# Playwright MCP scratch snapshots from screenshot capture
+.playwright-mcp/
