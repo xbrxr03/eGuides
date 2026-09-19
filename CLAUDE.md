@@ -98,15 +98,30 @@ a look.
 Real brand/tool icons come from [dashboardicons.com](https://dashboardicons.com)
 (GitHub: `homarr-labs/dashboard-icons`, Apache-2.0 — "icons are used for
 identification purposes only and do not imply endorsement"). Never hand-draw
-or invent a brand mark; either pull the real one or leave it out.
+or invent a brand mark; pull the real one, or fall back to the GitHub logo
+(see the convention below).
 
 **Convention: every tool a guide features gets its icon, everywhere it's
 named as a subject — not just the hero.** Hero tags, and every section/step
 that introduces a specific tool, should carry that tool's real icon (as a
 `.tag` badge, matching the hero pattern) if one exists. Try `fetch-icon.py`
 for every tool a guide names as a primary subject before writing that
-section; only skip the icon if the script genuinely reports no match — don't
-skip just because it's "only" a per-section mention. This does NOT mean
+section. **A featured tool must never end up with no icon.** If
+`fetch-icon.py` reports no match, fall back in this order:
+
+1. **The project's own official mark** — its GitHub org avatar
+   (`https://github.com/<org>.png?size=200`) or a logo asset committed in the
+   repo (check the README's `<img>` tags, e.g. `assets/<name>-logo.svg`).
+   This is the real brand mark, so it beats a generic stand-in. Save it into
+   `styles/icons/<slug>.<real-ext>` and verify the real file type — GitHub
+   serves some avatars as JPEG from a `.png` URL, same trap as
+   `eleven-labs-light` below. A wide wordmark needs a tight square `viewBox`
+   crop around the glyph or it's unreadable at 14px.
+2. **The GitHub logo** (`styles/icons/github.svg`) — only when the project
+   has no mark of its own.
+
+Never substitute another brand's lookalike.
+Don't skip just because it's "only" a per-section mention. This does NOT mean
 icon-per-word in prose — incidental mentions inside a sentence or a code
 snippet (e.g. an env var referencing a provider) don't need one; it's about
 the tools that get their own heading/section.
@@ -158,3 +173,8 @@ from disk will look unstyled; serve the repo root and navigate to
   to match.
 - 2026-08-23 — icons come from dashboardicons.com via `./fetch-icon.py`,
   cached in `styles/icons/`. Never fabricate a brand icon.
+- 2026-09-19 — a featured tool with no dashboardicons entry falls back to
+  the project's own mark (GitHub org avatar or a repo logo asset), and only
+  then to the GitHub logo. Never bare, never a lookalike. First cases:
+  `unsloth.png`, `ggml.jpg` (JPEG from a .png URL), `colibri.svg` (wordmark
+  cropped to the glyph).
