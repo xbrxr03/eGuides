@@ -163,6 +163,15 @@ body.grove {
   flex-shrink: 0;
 }
 .grove .icon-tile.coral { background: var(--grove-coral); }
+/* light tile — for brand marks that are themselves dark/black and would
+   disappear on the default forest tile (e.g. ollama, AnythingLLM) */
+.grove .icon-tile.chip {
+  background: var(--grove-chip);
+  box-shadow: inset 0 0 0 1px var(--grove-paper-line);
+}
+.grove .icon-tile.chip::after {
+  background: linear-gradient(135deg, rgba(255,255,255,0.75), rgba(255,255,255,0) 58%);
+}
 .grove .icon-tile::after {
   content: '';
   position: absolute;
