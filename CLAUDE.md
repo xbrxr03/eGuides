@@ -65,7 +65,9 @@ a look.
   the full color/type token set as CSS custom properties, and ships utility
   classes for the pack's signature patterns: `.kicker` (numbered pill badge),
   `.card`, `.stat` (big numbers), `.lead`, `.mono`, `.script`, `.graph-paper`
-  (grid background), `.icon-tile` (glossy beveled icon square), `.terminal`
+  (grid background), `.icon-tile` (glossy beveled icon square — forest green
+  by default, `.coral` and `.chip` variants; `.chip` is the light one, for
+  marks that are themselves black/near-black), `.terminal`
   (dark floating card), `.code-block` + `.copy-btn` (copy-pastable code, see
   below). Add `class="grove"` on `<body>` and on any container that needs
   the type rules.
@@ -102,12 +104,12 @@ or invent a brand mark; pull the real one, or fall back to the GitHub logo
 (see the convention below).
 
 **Convention: every tool a guide features gets its icon, everywhere it's
-named as a subject — not just the hero.** Hero tags, and every section/step
-that introduces a specific tool, should carry that tool's real icon (as a
-`.tag` badge, matching the hero pattern) if one exists. Try `fetch-icon.py`
-for every tool a guide names as a primary subject before writing that
-section. **A featured tool must never end up with no icon.** If
-`fetch-icon.py` reports no match, fall back in this order:
+named as a subject — not just the hero.** Every section/step that introduces
+a specific tool carries that tool's real icon in an `.icon-tile` after its
+heading (see "Where the icon goes" below); the hero row uses small `.tag`
+badges. Try `fetch-icon.py` for every tool a guide names as a primary
+subject before writing that section. **A featured tool must never end up
+with no icon.** If `fetch-icon.py` reports no match, fall back in this order:
 
 1. **The project's own official mark** — its GitHub org avatar
    (`https://github.com/<org>.png?size=200`) or a logo asset committed in the
@@ -116,7 +118,8 @@ section. **A featured tool must never end up with no icon.** If
    `styles/icons/<slug>.<real-ext>` and verify the real file type — GitHub
    serves some avatars as JPEG from a `.png` URL, same trap as
    `eleven-labs-light` below. A wide wordmark needs a tight square `viewBox`
-   crop around the glyph or it's unreadable at 14px.
+   crop around the glyph, or it's an unreadable smear once scaled down into
+   a tile (colibri's logo is 1236x240 — cropped to the bird glyph).
 2. **The GitHub logo** (`styles/icons/github.svg`) — only when the project
    has no mark of its own.
 
@@ -155,6 +158,26 @@ the tools that get their own heading/section.
 - Reference from a guide: `<img src="../styles/icons/<slug>.svg" alt="...">`
   — works well dropped into `.icon-tile` from the grove pack.
 
+**Where the icon goes: an `.icon-tile` after the heading text, not a 14px
+tag badge.** Each section that features a tool puts its mark in a 44px tile
+placed *after* the `<h2>`, in a flex row. 14px tag badges are too small to
+read on screen and don't carry at all on video. The stat row underneath then
+stays language / stars / license — don't repeat the tool name there, the
+tile already carries the brand.
+
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">#1: <span style="color:var(--grove-coral)">toolname</span></h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/<slug>.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+
+Use `.icon-tile chip` (light) by default — most brand marks are dark, and
+the pack's default forest tile swallows them. The `z-index:1` on the img is
+required: `.icon-tile::after` paints the gloss over its contents otherwise.
+Small tag badges are still fine for non-tool facts (star totals, "no API
+bill") and in the hero row.
+
 ## Previewing locally
 
 `.claude/launch.json` has a `static-preview` config (`python3 -m http.server
@@ -178,3 +201,6 @@ from disk will look unstyled; serve the repo root and navigate to
   then to the GitHub logo. Never bare, never a lookalike. First cases:
   `unsloth.png`, `ggml.jpg` (JPEG from a .png URL), `colibri.svg` (wordmark
   cropped to the glyph).
+- 2026-09-19 — a featured tool's icon goes in a 44px `.icon-tile chip` after
+  the section heading, not in a 14px tag badge: small badges don't carry on
+  video. Stat rows keep language/stars/license only.
