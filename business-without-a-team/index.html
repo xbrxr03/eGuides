@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run It Without a Team — 7 Repos That Cover the Roles</title>
+<link rel="stylesheet" href="../styles/grove/grove.css">
+<script src="../styles/grove/grove.js" defer></script>
+</head>
+<body class="grove">
+<div class="wrap">
+
+  <section class="section">
+    <span class="kicker">7 Repos · One Person</span>
+    <h1>You don't need a team to run a <span style="color:var(--grove-coral)">$100K business</span>.</h1>
+    <p class="lead">Seven open-source repos that cover the roles a small company usually hires for — assistant, team lead, sales, data entry, research, docs, and the senior dev who tells you not to build it.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+      <span class="tag"><img src="../styles/icons/github.svg" alt="" width="14" height="14"> 7 repos</span>
+      <span class="tag">252K+ combined stars</span>
+      <span class="tag">All MIT</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card mono" style="font-size:14px; color:var(--grove-muted);">
+      <strong style="color:var(--grove-ink);">How to use this guide:</strong> each entry is the role it replaces, what the repo actually does, and the install command from its own README. Star counts were pulled live when this guide was built.
+      <br><br>
+      <strong style="color:var(--grove-ink);">About the salary figures:</strong> they're US market averages for the equivalent role, not quotes for your market. Several match published averages exactly — executive assistant, technical writer and data entry clerk are Glassdoor and Built In's national numbers to the dollar. Treat them as a ballpark for what the job costs, not a promise of what you'll save.
+    </div>
+  </section>
+
+  <!-- 01 openworker -->
+  <section class="section" id="openworker">
+    <span class="kicker">Repo 01 / 07</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">#1: <span style="color:var(--grove-coral)">openworker</span></h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/github.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">The assistant. <span class="mono" style="color:var(--grove-muted);">≈ $84K a year</span></p>
+    <div class="screenshot">
+      <img src="assets/screenshots/openworker.png" alt="andrewyng/openworker repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/python.svg" alt="" width="14" height="14"> Python</span>
+      <span class="tag">★ 18,048</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>Andrew Ng's team shipped a desktop coworker that hands back finished work rather than chat — a written brief, a triaged inbox, a fixed calendar. It's local-first: the agent loop, your conversations, connector tokens and model keys all stay on your machine.</p>
+    <p><strong>The catch:</strong> there's no one-line installer yet. You run it from source, and you'll need Python 3.10+, Node 20+ and the Rust toolchain for the desktop shell.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>git clone https://github.com/andrewyng/openworker
+cd openworker
+
+# one-time bootstrap — creates the Python venv at .venv
+bash packaging/setup_dev_env.sh
+
+# start the local agent server
+.venv/bin/openworker-server --cwd ~/some/project --port 8765</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre># second terminal — the UI
+cd surfaces/gui
+npm install
+npm run dev          # browser UI
+# npm run tauri dev  # or the full desktop app</pre>
+    </div>
+    <p><a href="https://github.com/andrewyng/openworker">github.com/andrewyng/openworker →</a></p>
+  </section>
+
+  <!-- 02 improve -->
+  <section class="section" id="improve">
+    <span class="kicker">Repo 02 / 07</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">#2: <span style="color:var(--grove-coral)">improve</span></h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/github.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">The team lead. <span class="mono" style="color:var(--grove-muted);">≈ $152K a year</span></p>
+    <div class="screenshot">
+      <img src="assets/screenshots/improve.png" alt="shadcn/improve repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">★ 9,143</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>Your best model audits the whole codebase and writes the plan; cheap models execute it. That's a lead engineer's job description, running on a schedule. Plans land in <span class="mono">plans/</span> as plain markdown, so any agent — or human — can pick them up.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>npx skills add shadcn/improve</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/improve              # full audit -> prioritised findings -> plans
+/improve quick        # cheap pass: hotspots, top findings only
+/improve security     # focused audit (also: perf, tests, bugs)
+/improve execute 001  # dispatch a cheaper executor, review its work
+/improve reconcile    # refresh the backlog: verify, unblock, retire</pre>
+    </div>
+    <p><a href="https://github.com/shadcn/improve">github.com/shadcn/improve →</a></p>
+  </section>
+
+  <!-- 03 compai crm -->
+  <section class="section" id="compai-crm">
+    <span class="kicker">Repo 03 / 07</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">#3: <span style="color:var(--grove-coral)">Comp AI CRM</span></h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/compai.png" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">The sales hire. <span class="mono" style="color:var(--grove-muted);">≈ $72K a year</span></p>
+    <div class="screenshot">
+      <img src="assets/screenshots/compai-crm.png" alt="trycompai/crm repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/typescript.svg" alt="" width="14" height="14"> TypeScript</span>
+      <span class="tag">★ 10,642</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>A CRM built so an agent can actually run it, not just store rows in it. It chases the follow-ups and keeps the pipeline current while you're doing something else.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>git clone https://github.com/trycompai/crm.git &amp;&amp; cd crm
+bun install
+docker compose up -d   # Postgres on :5432
+bun run db:deploy      # apply migrations
+bun run db:seed        # optional: a believable pipeline to look at
+bun run dev</pre>
+    </div>
+    <p><a href="https://github.com/trycompai/crm">github.com/trycompai/crm →</a></p>
+  </section>
+
+  <!-- 04 Unlimited-OCR -->
+  <section class="section" id="unlimited-ocr">
+    <span class="kicker">Repo 04 / 07</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">#4: <span style="color:var(--grove-coral)">Unlimited-OCR</span></h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/baidu.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">The data clerk. <span class="mono" style="color:var(--grove-muted);">≈ $40K a year</span></p>
+    <div class="screenshot">
+      <img src="assets/screenshots/unlimited-ocr.png" alt="baidu/Unlimited-OCR repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/python.svg" alt="" width="14" height="14"> Python</span>
+      <span class="tag">★ 25,914</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>Baidu open-sourced document parsing with no length ceiling. Point it at the stack of invoices, contracts and scans nobody wants to type up and it reads all of it in one pass.</p>
+    <p><strong>The catch:</strong> this is a model, not a CLI. It expects an NVIDIA GPU — the easy path is the prebuilt vLLM image rather than assembling the Python environment yourself.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre># default (CUDA 13.0)
+docker pull vllm/vllm-openai:unlimited-ocr
+
+# Hopper GPUs (CUDA 12.9)
+docker pull vllm/vllm-openai:unlimited-ocr-cu129</pre>
+    </div>
+    <p><a href="https://github.com/baidu/Unlimited-OCR">github.com/baidu/Unlimited-OCR →</a></p>
+  </section>
+
+  <!-- 05 qmd -->
+  <section class="section" id="qmd">
+    <span class="kicker">Repo 05 / 07</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">#5: <span style="color:var(--grove-coral)">qmd</span></h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/github.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">The researcher. <span class="mono" style="color:var(--grove-muted);">≈ $66K a year</span></p>
+    <div class="screenshot">
+      <img src="assets/screenshots/qmd.png" alt="tobi/qmd repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/typescript.svg" alt="" width="14" height="14"> TypeScript</span>
+      <span class="tag">★ 29,870</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>One command that searches every doc, knowledge base and meeting note you own, entirely on your machine. Written by Shopify's CEO because he needed it.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>npm install -g @tobilu/qmd
+# or: bun install -g @tobilu/qmd</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>qmd collection add ~/notes --name notes
+qmd collection add ~/Documents/meetings --name meetings
+qmd context add qmd://notes "Personal notes and ideas"
+qmd embed                                 # generate embeddings
+
+qmd search "project timeline"             # fast keyword search
+qmd vsearch "how to deploy"               # semantic search
+qmd query "quarterly planning process"    # hybrid + reranking</pre>
+    </div>
+    <p><a href="https://github.com/tobi/qmd">github.com/tobi/qmd →</a></p>
+  </section>
+
+  <!-- 06 openwiki -->
+  <section class="section" id="openwiki">
+    <span class="kicker">Repo 06 / 07</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">#6: <span style="color:var(--grove-coral)">openwiki</span></h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/langchain.png" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">The tech writer. <span class="mono" style="color:var(--grove-muted);">≈ $78K a year</span></p>
+    <div class="screenshot">
+      <img src="assets/screenshots/openwiki.png" alt="langchain-ai/openwiki repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/typescript.svg" alt="" width="14" height="14"> TypeScript</span>
+      <span class="tag">★ 16,640</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>It writes the documentation for your codebase and then keeps it current as the code moves — the job everyone hires for and nobody keeps up with. Needs Node 22.22.0 or newer.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>npm install -g openwiki
+openwiki --init      # pick provider, key, model; writes docs to openwiki/
+openwiki --update    # refresh from changes since the last run</pre>
+    </div>
+    <p>There are ready-made CI jobs for GitHub Actions, GitLab CI and Bitbucket Pipelines that open a docs PR whenever the wiki changes — that's the part that makes it stick.</p>
+    <p><a href="https://github.com/langchain-ai/openwiki">github.com/langchain-ai/openwiki →</a></p>
+  </section>
+
+  <!-- 07 ponytail -->
+  <section class="section" id="ponytail">
+    <span class="kicker">Repo 07 / 07</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">#7: <span style="color:var(--grove-coral)">ponytail</span></h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/ponytail.png" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">The senior dev. <span class="mono" style="color:var(--grove-muted);">≈ $148K a year</span></p>
+    <div class="screenshot">
+      <img src="assets/screenshots/ponytail.png" alt="DietrichGebert/ponytail repository on GitHub" loading="lazy">
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/javascript.svg" alt="" width="14" height="14"> JavaScript</span>
+      <span class="tag">★ 142,522</span>
+      <span class="tag">MIT</span>
+    </div>
+    <p>Makes your agent think like the laziest senior in the room — the one who talks you out of building the thing. The most-starred repo in this guide by a distance, and the best code is still the code you never wrote.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin marketplace add DietrichGebert/ponytail</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>/plugin install ponytail@ponytail</pre>
+    </div>
+    <p>Those are two separate prompts — the install doesn't work if you send them together. For Codex: <span class="mono">codex plugin marketplace add DietrichGebert/ponytail</span> then <span class="mono">codex plugin add ponytail@ponytail</span>. Needs <span class="mono">node</span> on your PATH for the lifecycle hooks.</p>
+    <p><a href="https://github.com/DietrichGebert/ponytail">github.com/DietrichGebert/ponytail →</a></p>
+  </section>
+
+  <section class="section">
+    <span class="kicker">Quick Reference</span>
+    <h2>The whole roster.</h2>
+    <p class="lead">One row per hire you didn't make.</p>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr><th>Role</th><th>Repo</th><th>Command</th><th>Stars</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Senior dev</strong><br>≈ $148K</td><td>ponytail<br>DietrichGebert</td><td><span class="mono-cell">/plugin marketplace add DietrichGebert/ponytail</span></td><td>143K</td></tr>
+        <tr><td><strong>Researcher</strong><br>≈ $66K</td><td>qmd<br>tobi</td><td><span class="mono-cell">npm install -g @tobilu/qmd</span></td><td>30K</td></tr>
+        <tr><td><strong>Data clerk</strong><br>≈ $40K</td><td>Unlimited-OCR<br>baidu</td><td><span class="mono-cell">docker pull vllm/vllm-openai:unlimited-ocr</span></td><td>26K</td></tr>
+        <tr><td><strong>Assistant</strong><br>≈ $84K</td><td>openworker<br>andrewyng</td><td><span class="mono-cell">git clone https://github.com/andrewyng/openworker</span></td><td>18K</td></tr>
+        <tr><td><strong>Tech writer</strong><br>≈ $78K</td><td>openwiki<br>langchain-ai</td><td><span class="mono-cell">npm install -g openwiki</span></td><td>17K</td></tr>
+        <tr><td><strong>Sales</strong><br>≈ $72K</td><td>crm<br>trycompai</td><td><span class="mono-cell">git clone https://github.com/trycompai/crm.git</span></td><td>11K</td></tr>
+        <tr><td><strong>Team lead</strong><br>≈ $152K</td><td>improve<br>shadcn</td><td><span class="mono-cell">npx skills add shadcn/improve</span></td><td>9K</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="terminal" style="width:auto; display:inline-flex;">
+      <span class="dot" style="background:var(--grove-coral)"></span><span class="dot" style="background:var(--grove-sage)"></span>
+      one last thing
+    </div>
+    <h2 style="margin-top:16px;">A repo is not a hire.</h2>
+    <p>Every tool here removes work, and none of them removes judgement. The salary numbers are what the role costs on the open market, not what you'll bank — you're trading a salary for your own time spent running these, plus model costs on the ones that call an API. Two of the seven (openworker, Unlimited-OCR) need real setup before they do anything at all. Start with the one role that's actually your bottleneck rather than installing all seven.</p>
+  </section>
+
+</div>
+</body>
+</html>
