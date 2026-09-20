@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qwen Just Killed Claude Fable 5 — The Benchmarks</title>
+<link rel="stylesheet" href="../styles/grove/grove.css">
+<script src="../styles/grove/grove.js" defer></script>
+<style>
+  .grove .bench-chart { --c-claude:#CC5B3C; --c-gpt:#0F8A76; --c-qwen:#7A4FD1; }
+  .grove .bench-chart svg { width:100%; height:auto; display:block; }
+  .grove .bench-chart .bar { transition:opacity .12s ease; }
+  .grove .bench-chart svg:hover .bar { opacity:.45; }
+  .grove .bench-chart svg .bar:hover { opacity:1; }
+  .grove .bench-legend { display:flex; gap:18px; flex-wrap:wrap; margin:0 0 6px; font-family:var(--grove-font-mono); font-size:13px; color:var(--grove-muted); }
+  .grove .bench-legend span { display:inline-flex; align-items:center; gap:7px; }
+  .grove .bench-legend i { width:11px; height:11px; border-radius:3px; display:inline-block; }
+  .grove .win { color:#7A4FD1; font-weight:600; }
+  .grove .lose { color:#CC5B3C; font-weight:600; }
+</style>
+</head>
+<body class="grove">
+<div class="wrap">
+
+  <section class="section">
+    <span class="kicker">Benchmarks · Aug 2026</span>
+    <h1>Qwen just killed <span style="color:var(--grove-coral)">Claude Fable 5</span>. It's free. It's unlimited.</h1>
+    <p class="lead">Alibaba dropped Qwen3.8-Max on August 3rd and claimed it trades blows with Claude and GPT. Three real benchmarks, three different outcomes — and the weights are now public.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+      <span class="tag"><img src="../styles/icons/qwen.svg" alt="" width="14" height="14"> 2.4 trillion params</span>
+      <span class="tag">Launched Aug 3, 2026</span>
+      <span class="tag">Open weights</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card mono" style="font-size:14px; color:var(--grove-muted);">
+      <strong style="color:var(--grove-ink);">Where these numbers come from:</strong> Alibaba's own published benchmark table, as reported by MarkTechPost and confirmed against independent write-ups. Every score on this page is from that table — no re-runs, no estimates.
+      <br><br>
+      <strong style="color:var(--grove-ink);">Read the whole thing before you switch.</strong> Qwen wins two of the three headline benchmarks and loses the third badly. Sections 02 and 03 are both true at the same time.
+    </div>
+  </section>
+
+  <!-- 01 scoreboard -->
+  <section class="section" id="scoreboard">
+    <span class="kicker">01 / 04</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">Here's the real <span style="color:var(--grove-coral)">scoreboard</span>.</h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/qwen.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">Three real benchmarks, three different stories.</p>
+
+    <div class="card bench-chart" style="padding:22px 20px 16px;">
+      <div class="bench-legend">
+        <span><i style="background:var(--c-claude)"></i> Claude Fable 5</span>
+        <span><i style="background:var(--c-gpt)"></i> GPT-5.6 Sol</span>
+        <span><i style="background:var(--c-qwen)"></i> Qwen3.8-Max</span>
+      </div>
+      <svg viewBox="0 0 700 320" role="img" aria-label="Grouped bar chart comparing Claude Fable 5, GPT-5.6 Sol and Qwen3.8-Max across PaperBench, Terminal-Bench 2.1 and SWE-bench Pro, scored out of 100.">
+        <!-- grid -->
+        <g stroke="var(--grove-paper-line)" stroke-width="1">
+          <line x1="60" y1="40"  x2="680" y2="40"></line>
+          <line x1="60" y1="100" x2="680" y2="100"></line>
+          <line x1="60" y1="160" x2="680" y2="160"></line>
+          <line x1="60" y1="220" x2="680" y2="220"></line>
+        </g>
+        <line x1="60" y1="280" x2="680" y2="280" stroke="var(--grove-muted)" stroke-width="1"></line>
+        <!-- y labels -->
+        <g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--grove-muted)" text-anchor="end">
+          <text x="50" y="284">0</text>
+          <text x="50" y="224">25</text>
+          <text x="50" y="164">50</text>
+          <text x="50" y="104">75</text>
+          <text x="50" y="44">100</text>
+        </g>
+
+        <!-- PaperBench -->
+        <path class="bar" fill="var(--c-claude)" d="M92,280 L92,70.88 Q92,66.88 96,66.88 L134,66.88 Q138,66.88 138,70.88 L138,280 Z"><title>Claude Fable 5 — PaperBench 88.8</title></path>
+        <path class="bar" fill="var(--c-gpt)" d="M140,280 L140,66.8 Q140,62.8 144,62.8 L182,62.8 Q186,62.8 186,66.8 L186,280 Z"><title>GPT-5.6 Sol — PaperBench 90.5</title></path>
+        <path class="bar" fill="var(--c-qwen)" d="M188,280 L188,60.8 Q188,56.8 192,56.8 L230,56.8 Q234,56.8 234,60.8 L234,280 Z"><title>Qwen3.8-Max — PaperBench 93.0</title></path>
+
+        <!-- Terminal-Bench 2.1 -->
+        <path class="bar" fill="var(--c-claude)" d="M298,280 L298,80.96 Q298,76.96 302,76.96 L340,76.96 Q344,76.96 344,80.96 L344,280 Z"><title>Claude Fable 5 — Terminal-Bench 2.1 84.6</title></path>
+        <path class="bar" fill="var(--c-gpt)" d="M346,280 L346,70.88 Q346,66.88 350,66.88 L388,66.88 Q392,66.88 392,70.88 L392,280 Z"><title>GPT-5.6 Sol — Terminal-Bench 2.1 88.8</title></path>
+        <path class="bar" fill="var(--c-qwen)" d="M394,280 L394,76.16 Q394,72.16 398,72.16 L436,72.16 Q440,72.16 440,76.16 L440,280 Z"><title>Qwen3.8-Max — Terminal-Bench 2.1 86.6</title></path>
+
+        <!-- SWE-bench Pro -->
+        <path class="bar" fill="var(--c-claude)" d="M504,280 L504,92 Q504,88 508,88 L546,88 Q550,88 550,92 L550,280 Z"><title>Claude Fable 5 — SWE-bench Pro 80.0</title></path>
+        <path class="bar" fill="var(--c-gpt)" d="M552,280 L552,128.96 Q552,124.96 556,124.96 L594,124.96 Q598,124.96 598,128.96 L598,280 Z"><title>GPT-5.6 Sol — SWE-bench Pro 64.6</title></path>
+        <path class="bar" fill="var(--c-qwen)" d="M600,280 L600,121.52 Q600,117.52 604,117.52 L642,117.52 Q646,117.52 646,121.52 L646,280 Z"><title>Qwen3.8-Max — SWE-bench Pro 67.7</title></path>
+
+        <!-- value labels -->
+        <g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--grove-ink)" text-anchor="middle">
+          <text x="115" y="58">88.8</text><text x="163" y="54">90.5</text><text x="211" y="48">93.0</text>
+          <text x="321" y="68">84.6</text><text x="369" y="58">88.8</text><text x="417" y="63">86.6</text>
+          <text x="527" y="79">80.0</text><text x="575" y="116">64.6</text><text x="623" y="109">67.7</text>
+        </g>
+        <!-- group labels -->
+        <g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--grove-muted)" text-anchor="middle">
+          <text x="163" y="300">PaperBench</text>
+          <text x="369" y="300">Terminal-Bench 2.1</text>
+          <text x="575" y="300">SWE-bench Pro</text>
+        </g>
+      </svg>
+    </div>
+
+    <p>Score out of 100. Qwen takes PaperBench outright, edges Claude on Terminal-Bench while losing to GPT, and drops 12 points behind Claude on SWE-bench Pro.</p>
+  </section>
+
+  <!-- 02 wins -->
+  <section class="section" id="paperbench">
+    <span class="kicker">02 / 04</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">It genuinely <span style="color:var(--grove-coral)">beats Claude</span> here.</h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/qwen.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">PaperBench — reproducing real research work.</p>
+    <p>Qwen scores <span class="win">93.0</span> against Claude Fable 5's 88.8 and GPT-5.6 Sol's 90.5. It beats both of them outright, and Opus 4.8 sits far back at 80.3. That's a real gap, not a rounding error — and it's the benchmark closest to "read this paper and rebuild it."</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag"><img src="../styles/icons/qwen.svg" alt="" width="14" height="14"> PaperBench 93.0</span>
+      <span class="tag"><img src="../styles/icons/anthropic.svg" alt="" width="14" height="14"> Fable 5 · 88.8</span>
+      <span class="tag"><img src="../styles/icons/openai.svg" alt="" width="14" height="14"> GPT-5.6 Sol · 90.5</span>
+    </div>
+    <p>It also takes Terminal-Bench 2.1 off Claude — 86.6 to 84.6 — though GPT-5.6 Sol wins that one at 88.8.</p>
+  </section>
+
+  <!-- 03 loses -->
+  <section class="section" id="swebench">
+    <span class="kicker">03 / 04</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">It still loses the <span style="color:var(--grove-coral)">real job</span>.</h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/anthropic.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">SWE-bench Pro and FrontierSWE — actual coding work.</p>
+    <p>On SWE-bench Pro, Qwen scores <span class="lose">67.7</span> against Claude's 80.0. On FrontierSWE it's 73.5 against 88.8. Those gaps are wide open, and they're the benchmarks that look most like the work you'd actually hand a model on a Tuesday.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;">
+      <span class="tag">SWE-bench Pro · 67.7 vs 80.0</span>
+      <span class="tag">FrontierSWE · 73.5 vs 88.8</span>
+      <span class="tag">DeepSWE 1.1 · 56.6 vs 70.0</span>
+    </div>
+    <p>Across the nine coding-agent benchmarks in Alibaba's own table, <strong>Fable 5 wins six and Qwen wins two</strong> (with one Claude didn't post a score for). The headline is real on research work; on shipping code it isn't there yet.</p>
+  </section>
+
+  <!-- 04 open weights -->
+  <section class="section" id="weights">
+    <span class="kicker">04 / 04</span>
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+      <h2 style="margin:0;">Now you can <span style="color:var(--grove-coral)">run it yourself</span>.</h2>
+      <div class="icon-tile chip" style="width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <img src="../styles/icons/qwen.svg" alt="" style="width:26px; height:26px; object-fit:contain; position:relative; z-index:1;">
+      </div>
+    </div>
+    <p class="lead">The weights went public on August 12th.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/qwen-weights-hf.png" alt="Qwen3.8-2.4T-A95B model card on Hugging Face" loading="lazy">
+    </div>
+    <p>Alibaba open-sourced a Max-class model for the first time, as <span class="mono">Qwen3.8-2.4T-A95B</span> — 2.4 trillion parameters with about 95 billion active per token. The artifacts work with vLLM, SGLang and TokenSpeed.</p>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>hf download Qwen/Qwen3.8-2.4T-A95B</pre>
+    </div>
+    <p><strong>Before you start that download — the two things the headline leaves out:</strong></p>
+    <p><strong>1. It is not a small file.</strong> BF16 is about 4.9TB, FP8 about 2.5TB, and even the four-bit builds are 1.3–1.45TB. Serving FP8 needs roughly 2,400GB of VRAM — 16×H200 falls short; you're looking at 20×H200 or 8×B300, i.e. a multi-node cluster. "Free" here means free of licence fees, not free of hardware. This is not a laptop model, and it isn't a single-box model either.</p>
+    <p><strong>2. It is not MIT.</strong> It ships under a custom <span class="mono">qwen3.8-max</span> licence. Close to MIT in spirit, but it requires attribution above 100M monthly active users or $20M monthly revenue, and a <strong>separate licence for Model-as-a-Service or AI-assistant products</strong> — which is exactly what you'd be building if you resold access to it.</p>
+    <p>For most people the realistic path is renting it by the token through a provider rather than standing up the cluster.</p>
+    <div class="screenshot">
+      <img src="assets/screenshots/qwenlm-github.png" alt="QwenLM organisation on GitHub" loading="lazy">
+    </div>
+    <p><a href="https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B">huggingface.co/Qwen/Qwen3.8-2.4T-A95B →</a><br>
+       <a href="https://github.com/QwenLM">github.com/QwenLM →</a></p>
+  </section>
+
+  <section class="section">
+    <span class="kicker">Quick Reference</span>
+    <h2>The full table.</h2>
+    <p class="lead">All nine coding-agent benchmarks, five models. Alibaba's published figures.</p>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr><th>Benchmark</th><th>Opus 4.8</th><th>Fable 5</th><th>GPT-5.6 Sol</th><th>Qwen3.7-Max</th><th>Qwen3.8-Max</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Terminal-Bench 2.1</td><td>84.6</td><td>84.6</td><td><strong>88.8</strong></td><td>74.5</td><td>86.6</td></tr>
+        <tr><td>SWE-bench Pro</td><td>69.2</td><td><strong>80.0</strong></td><td>64.6</td><td>60.6</td><td>67.7</td></tr>
+        <tr><td>DeepSWE 1.1</td><td>59.0</td><td>70.0</td><td><strong>73.0</strong></td><td>21.6</td><td>56.6</td></tr>
+        <tr><td>NL2Repo-Bench</td><td><strong>69.4</strong></td><td>—</td><td>—</td><td>47.2</td><td>55.9</td></tr>
+        <tr><td>FrontierSWE</td><td>70.0</td><td><strong>88.8</strong></td><td>—</td><td>40.7</td><td>73.5</td></tr>
+        <tr><td>MLS-Bench-Lite</td><td>42.8</td><td><strong>49.9</strong></td><td>46.2</td><td>31.7</td><td>41.0</td></tr>
+        <tr><td>PaperBench</td><td>80.3</td><td>88.8</td><td>90.5</td><td>64.8</td><td><strong>93.0</strong></td></tr>
+        <tr><td>AndroidBench</td><td>69.8</td><td><strong>84.5</strong></td><td>74.0</td><td>56.5</td><td>75.1</td></tr>
+        <tr><td>QwenSWEBench</td><td>84.0</td><td><strong>86.3</strong></td><td>73.5</td><td>63.4</td><td>80.7</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:15px; color:var(--grove-muted);">Bold marks the leader in each row. Note that QwenSWEBench is Alibaba's own benchmark — and Fable 5 still wins it.</p>
+  </section>
+
+  <section class="section">
+    <div class="terminal" style="width:auto; display:inline-flex;">
+      <span class="dot" style="background:var(--grove-coral)"></span><span class="dot" style="background:var(--grove-sage)"></span>
+      one last thing
+    </div>
+    <h2 style="margin-top:16px;">Pick the model per job, not per headline.</h2>
+    <p>If your work is research reproduction or long-document reasoning, Qwen3.8-Max is genuinely the best score on the board and the weights are yours. If your work is shipping code, Fable 5 still wins six of the nine coding benchmarks in Alibaba's own table, including the one Alibaba built. The interesting story isn't that one killed the other — it's that an open-weight model is now close enough that the choice depends on the task.</p>
+  </section>
+
+</div>
+</body>
+</html>
